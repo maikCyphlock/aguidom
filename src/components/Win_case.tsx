@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -6,19 +7,53 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import { Card, CardContent } from "./ui/card";
+import { Card } from "./ui/card";
 
-function Win_case() {
+async function Win_case() {
+  const Items = [
+    {
+      imgUrl: "slider-1.webp",
+      title: "Alberto ponte",
+    },
+    {
+      imgUrl: "slider-2.webp",
+      title: "Alberto ponte",
+    },
+    {
+      imgUrl: "slider-3.webp",
+      title: "Alberto ponte",
+    },
+    {
+      imgUrl: "slider-4.webp",
+      title: "Alberto ponte",
+    },
+    {
+      imgUrl: "slider-5.webp",
+      title: "Alberto ponte",
+    },
+    {
+      imgUrl: "slider-6.jpeg",
+      title: "Alberto ponte",
+    },
+  ];
   return (
-    <Carousel className="mx-auto w-full max-w-6xl">
+    <Carousel className="mx-auto w-full max-w-xl lg:w-full lg:max-w-6xl pt-20">
+      <h2 className="text-center text-xl">Destacados</h2>
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
+        {Items.map((element, index) => (
+          <CarouselItem
+            key={index}
+            className=" basis-full  md:basis-1/2 lg:basis-1/3"
+          >
             <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
+              <Card className="bg-zinc-900 overflow-hidden ">
+                <Image
+                  src={`/${element.imgUrl}`}
+                  width={800}
+                  height={800}
+                  className="w-full  aspect-square object-cover"
+                  alt=""
+                />
               </Card>
             </div>
           </CarouselItem>

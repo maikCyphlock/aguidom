@@ -1,46 +1,77 @@
 import React from "react";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+
+import UserMenu from "./userMenu";
 
 function Navbar() {
   return (
-    <div
-      id="NavbarRoot"
-      className="flex flex-row justify-between w-full font-['Onest'] items-start px-32 mt-6"
-    >
-      <img
-        src="https://file.rendit.io/n/TAQzv7NaT36JAEeJkmLy.svg"
-        alt="Group"
-        className="w-16"
-      />
-      <div className="border-solid border-[#1c1c1c] bg-[#0e0c0c] flex flex-row justify-between mt-2 w-1/2 items-start pt-1 px-4 border rounded-[40px]">
-        <div className="text-center text-2xl tracking-[-0.24] text-[#fafafa] mb-1">
-          Inicio
-        </div>
-        <div className="text-center text-2xl tracking-[-0.24] text-[#fafafa]">
-          entrenamiento
-        </div>
-        <div className="text-center text-2xl tracking-[-0.24] text-[#fafafa]">
-          precios
-        </div>
-        <div className="text-center text-2xl tracking-[-0.24] text-[#fafafa]">
-          conoce más
-        </div>
-      </div>
-      <button
-        id="Btnsign"
-        className="border-solid border-[#1c1c1c] bg-[#151515] flex flex-row mt-1 gap-2 w-1/5 h-12 cursor-pointer items-start pt-2 px-2 border rounded-[82px]"
+    <>
+      <div
+        id="NavbarRoot"
+        className="lg:flex py-3 items-center border-b bg-zinc-950/80 backdrop-blur-md border-zinc-900  justify-around  hidden"
       >
         <img
-          src="https://file.rendit.io/n/r77YQKc0wIla6Ea40Tmt.svg"
-          alt="Devicongoogle"
-          id="Devicongoogle"
-          className="mt-1 w-6"
+          src="https://file.rendit.io/n/TAQzv7NaT36JAEeJkmLy.svg"
+          alt="Group"
+          className="h-12 w-12 hidden lg:block"
         />
-        <div className="text-center text-2xl tracking-[-0.24] text-[#c6c6c6]">
-          Sign in with google
+        <div className="gap-4 flex">
+          <a href="/" className="hover:underline text-center   ">
+            Inicio
+          </a>
+          <a href="/" className="hover:underline text-center  ">
+            entrenamiento
+          </a>
+          <a href="/" className="hover:underline text-center  ">
+            precios
+          </a>
+          <a href="/about" className="hover:underline text-center  ">
+            conoce más
+          </a>
         </div>
-      </button>
-    </div>
+        <UserMenu />
+      </div>
+      <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent  mr-4 sticky top-2">
+        <MenubarMenu>
+          <MenubarTrigger className="border bg-zinc-800">
+            <HamburgerIcon />
+          </MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>
+              <a href="/">Inicio</a>
+            </MenubarItem>
+            <MenubarItem>Entrenamientos</MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem>Noticias</MenubarItem>
+            <MenubarSeparator />
+
+            <div className="flex p-2   gap-2">
+              <UserMenu />
+            </div>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+    </>
   );
 }
 
+const HamburgerIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-6 w-6 fill-white"
+      viewBox="0 0 256 256"
+    >
+      <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
+    </svg>
+  );
+};
 export default Navbar;
