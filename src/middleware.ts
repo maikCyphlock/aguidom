@@ -11,11 +11,20 @@ export async function middleware(req: NextRequest) {
   const supabase = createMiddlewareClient<Database>({ req, res });
 
   // Refresh session if expired - required for Server Components
-  await supabase.auth.getSession();
+  try {
+    await supabase.auth.getSession();
+  } catch (error) {
+    console.log(error);
+  }
 
   const user = await supabase.auth.getUser();
   //check if current route is  "/onboarding"
-
+  if (!user.data.user && req.nextUrl.pathname.includes("subscribe")) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+  if (!user.data.user && req.nextUrl.pathname.includes("profile")) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
   if (user.data.user) {
     const { data, error } = await supabase
       .from("profiles")
@@ -30,7 +39,7 @@ export async function middleware(req: NextRequest) {
     }
     // Check if the current URL path is '/onboarding' and if the user is already onboarded
     if (req.nextUrl.pathname === "/onboarding" && data?.is_onboarded === true) {
-      return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/subscribe", req.url));
     }
   }
 }

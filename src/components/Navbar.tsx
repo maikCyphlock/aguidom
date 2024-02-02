@@ -39,7 +39,7 @@ function Navbar() {
         </div>
         <UserMenu />
       </div>
-      <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent  mr-4 sticky top-2">
+      <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent   sticky top-2 shadow-none">
         <MenubarMenu>
           <MenubarTrigger className="border bg-zinc-800">
             <HamburgerIcon />

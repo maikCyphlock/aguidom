@@ -37,7 +37,7 @@ async function Win_case() {
     },
   ];
   return (
-    <Carousel className="mx-auto w-full max-w-xl lg:w-full lg:max-w-6xl pt-20">
+    <Carousel className="mx-auto w-full max-w-72 lg:w-full lg:max-w-6xl pt-20">
       <h2 className="text-center text-xl">Destacados</h2>
       <CarouselContent>
         {Items.map((element, index) => (

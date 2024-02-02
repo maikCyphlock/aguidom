@@ -1,7 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/cRiFRj3XPa2
- */
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import CheckCircle from "./icons/CheckCircle";
@@ -35,7 +31,7 @@ export default function Component() {
               </li>
             </ul>
             <Button className="mt-auto rounded-xl hover:bg-green-300 active:bg-green-400">
-              Inscribirse
+              <a href="/subscribe"> Inscribirse</a>
             </Button>
           </Card>
         </div>
