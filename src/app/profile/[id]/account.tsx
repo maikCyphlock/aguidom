@@ -32,10 +32,13 @@ export default async function Account({ id }: { id: string }) {
           </h1>
         </div>
         <Card>
-          <CardHeader className="flex-row items-center">
+          <CardHeader className="flex-row items-center gap-2">
             <CardTitle className="basis-full">Mi perfil</CardTitle>
             <Button asChild size="sm" className=" self-end">
               <a href="/profile/edit">Editar</a>
+            </Button>
+            <Button asChild size="sm" className=" self-end">
+              <a href="/subscribe">Pagar la membresía</a>
             </Button>
           </CardHeader>
           <CardContent className="space-y-4">
