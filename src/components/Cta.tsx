@@ -9,7 +9,7 @@ function Cta() {
     >
       <div className=" grid place-items-center  w-full ">
         <img
-          src="/bg.png"
+          src="/bg.webp"
           className="absolute inset-0 -top-8 -z-10 w-screen brightness-75 "
         ></img>
 

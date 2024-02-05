@@ -41,7 +41,7 @@ async function UserMenu() {
           <img
             src={profiles?.avatar_url}
             alt="Avatar"
-            className="rounded-full w-6 h-6 lg:w-11 lg:h-11 border border-white "
+            className="rounded-full object-cover w-6 h-6 lg:w-11 lg:h-11 border border-white "
             referrerPolicy="no-referrer"
           />
         </DropdownMenuTrigger>

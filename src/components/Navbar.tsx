@@ -27,8 +27,8 @@ function Navbar() {
           <a href="/" className="hover:underline text-center   ">
             Inicio
           </a>
-          <a href="/" className="hover:underline text-center  ">
-            entrenamiento
+          <a href="/blog" className="hover:underline text-center  ">
+            noticias
           </a>
           <a href="/" className="hover:underline text-center  ">
             precios

@@ -28,7 +28,7 @@ export default function Error({
         <CardHeader>
           <CardTitle>Ups algo salio mal</CardTitle>
           <CardDescription>
-            tranquilo no es tu culpa, el mensaje del error es:
+            tranquilo no es tu culpa, el mensaje del error es:{" "}
             <span className="text-red-300">{error.message}</span>
           </CardDescription>
         </CardHeader>

@@ -19,10 +19,23 @@ export default function Component() {
     });
     router.refresh();
   };
+  const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email")?.toString();
+    const password = formData.get("password")?.toString();
+    console.log(email, password);
+    if (!email || !password) return;
+    await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+    router.refresh();
+  };
 
   return (
     <div className="w-full p-2  flex items-center justify-center">
-      <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-8 w-full max-w-md">
+      <div className="bg-white dark:bg-zinc-800 rounded-lg shadow-md p-12 w-full max-w-md">
         <div className="flex flex-col items-center">
           <img
             alt="Athletics Club Logo"
@@ -42,12 +55,13 @@ export default function Component() {
             ¡Bienvenido de nuevo! Por favor, inicia sesión en tu cuenta.
           </p>
         </div>
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleEmailSubmit}>
           <div className="space-y-1">
             <Label htmlFor="email">Correo Electronico</Label>
             <Input
               className="border  border-zinc-500"
               id="email"
+              name="email"
               required
               placeholder="john@doe.com"
               type="text"
@@ -67,6 +81,7 @@ export default function Component() {
               <Input
                 className="border border-zinc-500"
                 id="password"
+                name="password"
                 placeholder="********"
                 required
                 {...(show ? { type: "text" } : { type: "password" })}
@@ -99,7 +114,7 @@ export default function Component() {
         </form>
         <div className="mt-4 grid place-items-center gap-1  text-sm">
           No tiene una cuenta?
-          <Link className="underline text-green-500" href="#">
+          <Link className="underline text-green-500" href="/register">
             Registrate
           </Link>
         </div>

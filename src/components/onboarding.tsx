@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import type { Database } from "@/lib/database.types";
 import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Form,
   FormControl,
@@ -19,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { Label } from "./ui/label";
 
 const formSchema = z.object({
   full_name: z.string().min(2, { message: "El nombre es requerido" }),
@@ -36,12 +38,13 @@ const formSchema = z.object({
       message: "El numero no es valido,tiene letras o caracteres especiales",
     }),
   medical_conditions: z.string().max(400, { message: "Maximo 400 caracteres" }),
+  gender: z.enum(["hombre", "mujer", "prefiero no decir"], {
+    required_error: "You need to select a notification type.",
+  }),
 });
 
 const supabase = createClientComponentClient<Database>();
 export function Onboarding() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isUploading, setIsUploading] = useState(false);
   const [imgUrl, setImgUrl] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,10 +53,12 @@ export function Onboarding() {
       date_of_birth: "",
       contact_number: "",
       medical_conditions: "",
+      gender: "",
     },
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    if (!imgUrl) return toast.error("Debe subir una imagen");
     const { data: runners, error } = await supabase
       .from("runners")
       .insert([
@@ -64,6 +69,7 @@ export function Onboarding() {
           phone_contact: data.contact_number,
           medical_conditions: data.medical_conditions,
           avatar_url: imgUrl,
+          gender: data.gender,
         },
       ])
       .select("*");
@@ -91,10 +97,15 @@ export function Onboarding() {
       >
         <div className="w-full max-w-2xl flex flex-col gap-4">
           <div className="space-y-4 text-center">
-            <h1 className="text-3xl font-bold">Registro del atleta </h1>
+            <small className="text-green-500 dark:text-green-400">
+              primero registrate para continuar a otros sitio de la web
+            </small>
+            <h1 className="text-3xl lg:text-4xl font-bold">
+              2. Registro del atleta{" "}
+            </h1>
             <p className="text-gray-500 dark:text-gray-400">
-              Por favor complete la siguiente información para finalizar su
-              registro.
+              Ahora puedes registrar tu atleta, puede ser tu hijo(s), o tu
+              mismo.
             </p>
           </div>
           <div className="space-y-2">
@@ -142,9 +153,50 @@ export function Onboarding() {
                     <Input type="tel" {...field} />
                   </FormControl>
                   <FormDescription>
-                    El numero de telefono para contactarte
+                    si necesitamos llamarte de emergencia, (obligatorio para los
+                    niños)
                   </FormDescription>
                   <FormMessage className="text-red-500" />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div className="space-y-2">
+            <FormField
+              control={form.control}
+              name="gender"
+              render={({ field }) => (
+                <FormItem className="space-y-3">
+                  <FormLabel>género</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                      className="flex flex-col space-y-1"
+                    >
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="hombre" />
+                        </FormControl>
+                        <FormLabel className="font-normal">hombre</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="mujer" />
+                        </FormControl>
+                        <FormLabel className="font-normal">mujer</FormLabel>
+                      </FormItem>
+                      <FormItem className="flex items-center space-x-3 space-y-0">
+                        <FormControl>
+                          <RadioGroupItem value="prefiero no decirlo" />
+                        </FormControl>
+                        <FormLabel className="font-normal">
+                          prefiero no decirlo
+                        </FormLabel>
+                      </FormItem>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -174,14 +226,21 @@ export function Onboarding() {
             <span>Imagen del participante</span>
 
             <CldUploadWidget
-              options={{ sources: ["local", "url", "unsplash"] }}
+              options={{
+                sources: ["local", "url", "unsplash"],
+                showUploadMoreButton: false,
+                maxFiles: 1,
+                maxFileSize: 5242880,
+              }}
               uploadPreset="kzfx7bpb"
               onSuccess={(e) => setImgUrl(e.info.url)}
             >
               {({ open, results, show }) => {
                 return (
                   <div>
-                    <Button onClick={() => open()}>subir imagen</Button>
+                    <Button type="button" onClick={() => open()}>
+                      subir imagen
+                    </Button>
                   </div>
                 );
               }}
@@ -189,7 +248,7 @@ export function Onboarding() {
             <img
               src={imgUrl ?? ""}
               hidden={imgUrl === null}
-              className="h-20 w-20"
+              className="object-cover h-20 w-20"
             />
           </div>
           <Button>Registrar</Button>

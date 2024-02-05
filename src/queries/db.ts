@@ -1,10 +1,7 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { Database } from "@/lib/database.types";
-import { cookies } from "next/headers";
-const supabase = createServerComponentClient<Database>({ cookies });
+import { supabaseServerActions } from "@/lib/supabaseServerAction";
 export async function getProfileById(id: string) {
   try {
-    const { data: profile } = await supabase
+    const { data: profile } = await supabaseServerActions
       .from("profiles")
       .select("*")
       .eq("id", id)
@@ -18,7 +15,7 @@ export async function getProfileById(id: string) {
 
 export async function getRunnersByProfileId(id: string) {
   try {
-    const { data: runners } = await supabase
+    const { data: runners } = await supabaseServerActions
       .from("runners")
       .select("*")
       .eq("profile_id", id);

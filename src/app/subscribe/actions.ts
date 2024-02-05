@@ -2,18 +2,14 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { ApiRequestPayment, PaymentSchema } from "@/lib/schemaValidations";
-import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
-
-const supabase = createServerComponentClient({
-  cookies,
-});
+import { supabaseServerActions } from "@/lib/supabaseServerAction";
 
 export async function payment(values) {
   try {
     const userData = PaymentSchema.parse(values);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    const { data, error } = await supabase
+
+    const { data, error } = await supabaseServerActions
       .from("payments")
       .insert([
         {
