@@ -9,8 +9,9 @@ function Cta() {
     >
       <div className=" grid place-items-center  w-full ">
         <img
-          src="/bg.webp"
-          className="absolute inset-0 -top-8 -z-10 w-screen brightness-75 "
+          srcSet="/bg-phone.webp 640w, /bg.webp 1280w"
+          sizes="(max-width: 640px) 640px, 100vw"
+          className="absolute inset-0 -top-8 -z-10 w-screen brightness-50 "
         ></img>
 
         {/* <div className="absolute ">
@@ -19,10 +20,10 @@ function Cta() {
         <div className="text-center text-7xl lg:text-[180px] font-bold tracking-[-2.1] text-white relative ">
           Aguidom
         </div>
+        <p className="w-1/2 text-pretty mt-12 font-bold  text-xl  lg:text-5xl tracking-widest  font-serif    text-center">
+          Club Deportivo de alto rendimiento
+        </p>
       </div>
-      <p className="w-1/2 text-pretty font-bold  text-xl  lg:text-5xl tracking-widest  font-serif    text-center">
-        Club Deportivo de alto rendimiento
-      </p>
     </div>
   );
 }
