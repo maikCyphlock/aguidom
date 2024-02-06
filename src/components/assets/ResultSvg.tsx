@@ -2,7 +2,7 @@ import React from 'react'
 
 function ResultSvg() {
     return (
-        <svg width="500" height="400" viewBox="0 0 1122 830" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='w-[412px] lg:w-[500px] ' height="400" viewBox="0 0 1122 830" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_dddd_9_14)">
                 <rect x="60" y="249" width="293" height="341" rx="29" fill="url(#paint0_radial_9_14)" />
                 <rect x="61" y="250" width="291" height="339" rx="28" stroke="url(#paint1_linear_9_14)" stroke-width="2" />
