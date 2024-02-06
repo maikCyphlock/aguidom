@@ -1,4 +1,5 @@
 import React from "react";
+import ResultSvg from "./assets/ResultSvg";
 
 function Experience() {
   return (
@@ -20,30 +21,8 @@ function Experience() {
           No esperes a que la suerte te toque. Comienza a trabajar duro y a
           seguir un plan, y verás que el éxito llegará
         </div>
-        <div className="flex flex-row  gap-8 items-end">
-          <div className="flex flex-col  gap-6  items-center">
-            <div className="text-center text-3xl  text-white ">Talento</div>
-            <div className="grid place-items-center text-6xl tracking-[-0.64] bg-[#00cff0] text-[#082227]  w-20 h-36 lg:w-32">
-              2
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-4 ">
-            <div className="grid place-items-center text-3xl tracking-[-0.32] text-white">
-              Disciplina
-            </div>
-            <div className="grid place-items-center text-6xl tracking-[-0.64] bg-[#fca311] text-[#2b1e09] w-30 h-48 lg:w-32">
-              1
-            </div>
-          </div>
-          <div className="flex flex-col mt-8 gap-10  items-start">
-            <div className="grid place-items-center text-3xl tracking-[-0.32] text-white ">
-              Suerte
-            </div>
-            <div className="grid place-items-center text-6xl tracking-[-0.64] bg-[#3fd88d]  text-[#081a11] w-20 h-32 lg:w-32">
-              3
-            </div>
-          </div>
+        <div className="">
+          <ResultSvg />
         </div>
       </div>
     </div>

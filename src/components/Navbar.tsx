@@ -41,7 +41,7 @@ function Navbar() {
       </div>
       <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent   sticky top-2 shadow-none">
         <MenubarMenu>
-          <MenubarTrigger className="border bg-zinc-800">
+          <MenubarTrigger className="border bg-zinc-800 border-zinc-700 shadow-lg">
             <HamburgerIcon />
           </MenubarTrigger>
           <MenubarContent>
@@ -53,7 +53,7 @@ function Navbar() {
             <MenubarItem>Noticias</MenubarItem>
             <MenubarSeparator />
 
-            <div className="flex p-2   gap-2">
+            <div className="flex p-2 basis-full   gap-2">
               <UserMenu />
             </div>
           </MenubarContent>

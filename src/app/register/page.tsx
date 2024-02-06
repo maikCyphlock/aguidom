@@ -6,10 +6,9 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { registerUser } from "./actions";
 import * as z from "zod";
 import { ZodError } from "zod";
-import FormClient from "../profile/[id]/FormClient";
+
 import { FormSubmitBtn } from "../profile/[id]/FormSubmitBtn";
 import { toast } from "sonner";
 
@@ -75,7 +74,7 @@ export default function Component() {
 
       return toast.success("Registro exitoso, por favor revise su correo");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       if (error instanceof ZodError) {
         return toast.error(error.issues[0].message);
       }

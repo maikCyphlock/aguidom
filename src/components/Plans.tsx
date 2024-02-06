@@ -1,7 +1,7 @@
 export default function Component() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
+      <div className="container  items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
         <div className="space-y-3">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
             Horario del Club de Atletismo
@@ -10,16 +10,20 @@ export default function Component() {
             Consulta nuestro programa de entrenamiento semanal.
           </p>
         </div>
-        <div className="flex  flex-col md:flex-row gap-8 ">
-          <div className="flex justify-center flex-col items-center gap-2">
-            <iframe
+
+        <div className="flex pt-8  flex-col md:flex-row gap-8 justify-center items-stretch ">
+
+          <div className="flex basis-1/2 justify-center flex-col items-center gap-2">
+
+            <img className="rounded-lg w-full h-full" src="/stadium_address.png" alt="stadium_address" />
+            {/* <iframe
               height="300"
               src="https://www.openstreetmap.org/export/embed.html?bbox=-69.21520829200746%2C9.567288275894905%2C-69.20699000358583%2C9.573889888189486&amp;layer=mapnik"
-            ></iframe>
-            <span>Estadio Jose Antonio Páez</span>
+            ></iframe> */}
+
           </div>
-          <div className="flex flex-col">
-            <div className="rounded-lg border p-4">
+          <div className="flex flex-col basis-1/2">
+            <div className="rounded-lg border p-4 grow">
               <h3 className="font-bold text-lg mb-2">
                 <DumbbellIcon />
                 Lunes, Martes, Jueves
@@ -43,7 +47,9 @@ export default function Component() {
             </div>
           </div>
         </div>
+        <span className="text-zinc-500 ">Estadio Jose Antonio Páez</span>
       </div>
+
     </section>
   );
 }

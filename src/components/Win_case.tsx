@@ -37,31 +37,34 @@ async function Win_case() {
     },
   ];
   return (
-    <Carousel className="mx-auto w-full max-w-72 lg:w-full lg:max-w-6xl pt-20">
-      <h2 className="text-center text-xl">Destacados</h2>
-      <CarouselContent>
-        {Items.map((element, index) => (
-          <CarouselItem
-            key={index}
-            className=" basis-full  md:basis-1/2 lg:basis-1/3"
-          >
-            <div className="p-1">
-              <Card className="bg-zinc-900 overflow-hidden ">
-                <Image
-                  src={`/${element.imgUrl}`}
-                  width={800}
-                  height={800}
-                  className="w-full  aspect-square object-cover"
-                  alt=""
-                />
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <section> <h2 className="text-center text-3xl md:text-6xl text-zinc-100 mb-32">Atletas que entrenan con <span className="text-sky-300 ">nosotros</span></h2>
+      <Carousel className="mx-auto w-full max-w-72 md:max-w-xl lg:max-w-6xl ">
+
+
+        <CarouselContent>
+          {Items.map((element, index) => (
+            <CarouselItem
+              key={index}
+              className=" basis-full  md:basis-1/2 lg:basis-1/3"
+            >
+              <div className="p-1">
+                <Card className="bg-zinc-900 overflow-hidden ">
+                  <Image
+                    src={`/${element.imgUrl}`}
+                    width={800}
+                    height={800}
+                    className="w-full  aspect-square object-cover"
+                    alt=""
+                  />
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </section>
   );
 }
 
