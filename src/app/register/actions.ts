@@ -26,7 +26,7 @@ const registerSchema = z.object({
 });
 
 export const registerUser = async (_, props: FormData) => {
-  console.log({ props });
+  console.log({ URL_TO_REDIRRECT });
   try {
     const registerDate = {
       email: props.get("email")?.toString(),

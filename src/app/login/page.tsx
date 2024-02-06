@@ -14,7 +14,7 @@ export default function Component() {
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${window.location.origin}/auth/google/callback`,
       },
     });
     router.refresh();
@@ -98,7 +98,7 @@ export default function Component() {
             </div>
           </div>
           <Button
-            className="w-full bg-green-500 text-white hover:text-green-800"
+            className="w-full bg-green-600 text-white hover:text-green-800"
             type="submit"
           >
             Login

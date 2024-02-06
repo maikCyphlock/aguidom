@@ -37,8 +37,11 @@ export default function Component() {
   const supabase = createClientComponentClient();
   const router = useRouter();
   const handleGoogleSubmit = async () => {
-    await supabase.auth.signUp({
-      email: email,
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/google/callback`,
+      },
     });
     router.refresh();
   };
@@ -149,7 +152,7 @@ export default function Component() {
           </div>
           <FormSubmitBtn
             title="Registrar"
-            className="bg-green-500 text-green-100 w-full hover:bg-green-800"
+            className="bg-orange-600 text-green-100 w-full hover:bg-orange-800"
           />
           <Button
             className="w-full flex gap-1 bg-zinc-900 text-white hover:text-zinc-800"
