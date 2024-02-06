@@ -7,9 +7,28 @@ import { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
 import { registerUser } from "./actions";
-
+import * as z from "zod";
+import { ZodError } from "zod";
 import FormClient from "../profile/[id]/FormClient";
 import { FormSubmitBtn } from "../profile/[id]/FormSubmitBtn";
+import { toast } from "sonner";
+
+const registerSchema = z.object({
+  email: z.string().email({ message: "Ingresa un correo valido" }),
+  password: z
+    .string()
+    .min(8, { message: "La contraseña debe contener al menos 8 caracteres" })
+    .refine((password) => /[A-Z]/.test(password), {
+      message: "La contraseña debe contener al menos una letra mayúscula",
+    })
+    .refine((password) => /[a-z]/.test(password), {
+      message: "La contraseña debe contener al menos una letra minúscula",
+    })
+    .refine((password) => /\d/.test(password), {
+      message: "La contraseña debe contener al menos un número",
+    }),
+});
+
 export default function Component() {
   const [email, setEmail] = useState("maik");
   const [password, setPassword] = useState("maik");
@@ -27,18 +46,38 @@ export default function Component() {
   const handleEmailSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const email = formData.get("email")?.toString();
-    const password = formData.get("password")?.toString();
-    console.log(email, password);
-    if (!email || !password) return;
-    await supabase.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-    router.refresh();
+
+    const registerDate = {
+      email: formData.get("email")?.toString(),
+      password: formData.get("password")?.toString(),
+    };
+    try {
+      const valitadedData = registerSchema.parse(registerDate);
+
+      const { error } = await supabase.auth.signUp({
+        email: valitadedData.email,
+        password: valitadedData.password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
+        },
+      });
+      router.refresh();
+
+      if (error) {
+        return {
+          error: error.message,
+          status: 400,
+        };
+      }
+
+      return toast.success("Registro exitoso, por favor revise su correo");
+    } catch (error) {
+      console.log(error);
+      if (error instanceof ZodError) {
+        return toast.error(error.issues[0].message);
+      }
+      return toast.error(error.message);
+    }
   };
   return (
     <div className="w-full p-2  flex items-center justify-center">
