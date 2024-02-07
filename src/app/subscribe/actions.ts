@@ -30,6 +30,7 @@ export async function payment(values) {
     return {
       status: 200,
       message: "Se ha registrado exitosamente",
+      id: data.id,
     };
   } catch (error) {
     if (error instanceof ZodError) {

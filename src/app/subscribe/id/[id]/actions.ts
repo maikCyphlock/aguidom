@@ -3,14 +3,15 @@
 import { PaymentSchema } from "@/lib/schemaValidations";
 
 import { supabaseServerActions } from "@/lib/supabaseServerAction";
+
 import { ZodError } from "zod";
 
 export async function sendReferenceOfPayment(_, values: FormData) {
-  console.log(values);
   try {
     // using object instead of string to make more extensible
     const reference = {
       reference: values.get("reference")?.toString(),
+      id: values.get("id")?.toString(),
     };
     const userData = PaymentSchema.parse(reference);
 
@@ -25,6 +26,7 @@ export async function sendReferenceOfPayment(_, values: FormData) {
           await supabaseServerActions.auth.getUser()
         ).data.user?.id
       )
+      .eq("id", userData.id)
       .select("*")
       .single()
       .throwOnError();
@@ -36,6 +38,7 @@ export async function sendReferenceOfPayment(_, values: FormData) {
         status: 400,
       };
     }
+
     return {
       status: 200,
       message: "Se ha registrado exitosamente",
@@ -54,4 +57,7 @@ export async function sendReferenceOfPayment(_, values: FormData) {
       status: 400,
     };
   }
+}
+function Redirect(arg0: string, arg1: { status: number; id: any }) {
+  throw new Error("Function not implemented.");
 }

@@ -13,6 +13,7 @@ export const PaymentFirstSubscriptionSchema = z.object({
 });
 
 export const PaymentSchema = z.object({
+  id: z.string().min(1, { message: "El id es requerido" }),
   reference: z
     .string()
     .min(4, { message: "El número de referencia es requerido" }),

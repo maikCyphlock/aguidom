@@ -1,5 +1,5 @@
 import React from "react";
-import ResultSvg from "./assets/StepVertical";
+import ResultSvg from "./assets/ResultSvg";
 
 function Experience() {
   return (

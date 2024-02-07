@@ -2,8 +2,8 @@
 import { useEffect } from "react";
 import { useFormState } from "react-dom";
 import { toast } from "sonner";
-
-function FormClient({ children, action, className }) {
+import { redirect } from "next/navigation";
+function FormClient({ children, action, className, redirrectUrl }) {
   const [state, Action] = useFormState(action, null);
   console.log({ state, Action });
   useEffect(() => {
@@ -14,6 +14,9 @@ function FormClient({ children, action, className }) {
     }
     if (state?.success || state.status === 200) {
       toast.success(state.message);
+      if (redirrectUrl) {
+        redirect(redirrectUrl);
+      }
     }
   }, [state]);
   return (

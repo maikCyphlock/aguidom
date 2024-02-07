@@ -42,7 +42,9 @@ function page() {
           });
         form.reset();
         toast.success("Informacion agregada exitosamente");
-        router.push("/subscribe/2")
+        console.log({ e })
+        const url = `/subscribe/id/${e.id}`
+        router.push(url)
       })
       .catch((error) => {
         toast.error("Hubo un error al registrar la información", {

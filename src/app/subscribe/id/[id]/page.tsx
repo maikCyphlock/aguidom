@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import FormClient from "@/components/FormClient";
 import { FormSubmitBtn } from "@/components/FormSubmitBtn";
-function page() {
+function page({ params }: { params: { id: number } }) {
+  const sendReferenceOfPaymentWithId = sendReferenceOfPayment.bind(params.id)
   return (
     <section className="container flex justify-center items-center mx-auto">
       <div className=" w-full max-w-2xl  m-4 flex flex-col gap-4">
@@ -47,8 +48,9 @@ function page() {
           <hr />
           <small className="text-green-400">una vez que hayas hecho el pago movil ingresa la referencia</small>
         </div>
-        <FormClient action={sendReferenceOfPayment} className="space-y-4">
+        <FormClient redirrectUrl={"/subscribe/finished"} action={sendReferenceOfPaymentWithId} className="space-y-4">
           <Label htmlFor="reference">Referencia</Label>
+          <Input className="hidden" type="text" name="id" value={params.id}></Input>
           <Input type="text" name="reference" />
           <FormSubmitBtn className={"bg-green-700 text-green-200 hover:bg-green-800 "} title="Enviar"></FormSubmitBtn>
         </FormClient>
