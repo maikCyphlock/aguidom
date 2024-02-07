@@ -37,8 +37,8 @@ async function Win_case() {
     },
   ];
   return (
-    <section> <h2 className="text-center text-3xl md:text-6xl text-zinc-100 mb-32">Atletas que entrenan con <span className="text-sky-300 ">nosotros</span></h2>
-      <Carousel className="mx-auto w-full max-w-72 md:max-w-xl lg:max-w-6xl ">
+    <section> <h2 className="text-center text-3xl md:text-6xl text-zinc-100 mb-12 md:mb-32">Atletas que entrenan con <span className="text-sky-300 ">nosotros</span></h2>
+      <Carousel className="mx-auto w-full max-w-52 md:max-w-xl lg:max-w-6xl ">
 
 
         <CarouselContent>

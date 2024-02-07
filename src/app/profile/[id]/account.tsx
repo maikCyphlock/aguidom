@@ -23,8 +23,8 @@ import { Switch } from "@/components/ui/switch";
 
 import { getProfileById, getRunnersByProfileId } from "@/queries/db";
 import { EditServerAction, RemoveServerAction } from "./actions";
-import { FormSubmitBtn } from "./FormSubmitBtn";
-import FormClient from "./FormClient";
+import { FormSubmitBtn } from "../../../components/FormSubmitBtn";
+import FormClient from "../../../components/FormClient";
 
 export default async function Account({ id }: { id: string }) {
   const profiles = await getProfileById(id);

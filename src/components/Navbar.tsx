@@ -5,7 +5,7 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
+
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
@@ -30,7 +30,7 @@ function Navbar() {
           <a href="/blog" className="hover:underline text-center  ">
             noticias
           </a>
-          <a href="/" className="hover:underline text-center  ">
+          <a href="/subscribe" className="hover:underline text-center  ">
             precios
           </a>
           <a href="/about" className="hover:underline text-center  ">
@@ -39,20 +39,28 @@ function Navbar() {
         </div>
         <UserMenu />
       </div>
-      <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent   sticky top-2 shadow-none">
-        <MenubarMenu>
+      <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent   sticky top-4 mr-12 shadow-none">
+        <MenubarMenu >
           <MenubarTrigger className="border bg-zinc-800 border-zinc-700 shadow-lg">
             <HamburgerIcon />
           </MenubarTrigger>
-          <MenubarContent>
-            <MenubarItem>
+          <MenubarContent className=" mr-6">
+            <MenubarItem asChild>
               <a href="/">Inicio</a>
             </MenubarItem>
-            <MenubarItem>Entrenamientos</MenubarItem>
             <MenubarSeparator />
-            <MenubarItem>Noticias</MenubarItem>
+            <MenubarItem asChild>
+              <a href="/blog">noticias</a>
+            </MenubarItem>
             <MenubarSeparator />
-
+            <MenubarItem asChild>
+              <a href="/subscribe">precios</a>
+            </MenubarItem>
+            <MenubarSeparator />
+            <MenubarItem asChild>
+              <a href="/about">acerca de</a>
+            </MenubarItem>
+            <MenubarSeparator />
             <div className="flex p-2 basis-full   gap-2">
               <UserMenu />
             </div>

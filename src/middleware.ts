@@ -40,6 +40,9 @@ export async function middleware(req: NextRequest) {
     if (req.nextUrl.pathname === "/onboarding" && data?.is_onboarded === true) {
       return NextResponse.redirect(new URL("/subscribe", req.url));
     }
+    if (req.nextUrl.pathname === "/new" && data?.is_onboarded === true) {
+      return NextResponse.redirect(new URL("/subscribe", req.url));
+    }
   }
 }
 

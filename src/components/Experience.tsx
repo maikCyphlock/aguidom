@@ -1,5 +1,5 @@
 import React from "react";
-import ResultSvg from "./assets/ResultSvg";
+import ResultSvg from "./assets/StepVertical";
 
 function Experience() {
   return (
@@ -12,7 +12,7 @@ function Experience() {
             className="w-5"
           />
         </div>
-        <div className="text-6xl font-bold tracking-[-0.64] text-white text-balance">
+        <div className="text-4xl md:text-6xl font-bold tracking-[-0.64] text-white text-balance">
           25+ de experiencia en el deporte
         </div>
       </div>

@@ -1,6 +1,10 @@
-import { Button } from "@/components/ui/button";
+
 import React from "react";
-import { randomUUID } from "crypto";
+import { sendReferenceOfPayment } from './actions.ts'
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import FormClient from "@/components/FormClient";
+import { FormSubmitBtn } from "@/components/FormSubmitBtn";
 function page() {
   return (
     <section className="container flex justify-center items-center mx-auto">
@@ -40,11 +44,16 @@ function page() {
             <span className="font-bold text-2xl">C.I</span>
             <span>30054068</span>
           </div>
+          <hr />
+          <small className="text-green-400">una vez que hayas hecho el pago movil ingresa la referencia</small>
         </div>
-
-        <Button>Suscribete</Button>
+        <FormClient action={sendReferenceOfPayment} className="space-y-4">
+          <Label htmlFor="reference">Referencia</Label>
+          <Input type="text" name="reference" />
+          <FormSubmitBtn className={"bg-green-700 text-green-200 hover:bg-green-800 "} title="Enviar"></FormSubmitBtn>
+        </FormClient>
       </div>
-    </section>
+    </section >
   );
 }
 

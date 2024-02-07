@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { payment } from "./actions";
-import { useForm, useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -15,14 +15,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ApiRequestPayment, PaymentSchema } from "@/lib/schemaValidations";
+import { ApiRequestPayment, PaymentFirstSubscriptionSchema } from "@/lib/schemaValidations";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 function page() {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<ApiRequestPayment>({
-    resolver: zodResolver(PaymentSchema),
+    resolver: zodResolver(PaymentFirstSubscriptionSchema),
     defaultValues: {
       phone: "",
       dni: "",
@@ -40,6 +42,7 @@ function page() {
           });
         form.reset();
         toast.success("Informacion agregada exitosamente");
+        router.push("/subscribe/2")
       })
       .catch((error) => {
         toast.error("Hubo un error al registrar la información", {
@@ -113,7 +116,7 @@ function page() {
 
             <Button disabled={isSubmitting} type="submit">
               {" "}
-              Submit
+              Guardar
             </Button>
           </form>
         </Form>

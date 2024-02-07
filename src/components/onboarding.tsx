@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { Label } from "./ui/label";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   full_name: z.string().min(2, { message: "El nombre es requerido" }),
@@ -45,6 +45,7 @@ const formSchema = z.object({
 
 const supabase = createClientComponentClient<Database>();
 export function Onboarding() {
+  const router = useRouter();
   const [imgUrl, setImgUrl] = useState<string | null>(null);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -87,6 +88,7 @@ export function Onboarding() {
         .eq("id", (await supabase.auth.getUser()).data.user?.id)
         .single();
       toast.success("Información del atleta registrada correctamente");
+      router.push("/");
     }
   };
   return (

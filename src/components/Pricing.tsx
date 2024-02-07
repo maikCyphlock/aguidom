@@ -35,7 +35,9 @@ export default function Component() {
             </Button>
           </Card>
         </div>
+
       </div>
+
     </section>
   );
 }

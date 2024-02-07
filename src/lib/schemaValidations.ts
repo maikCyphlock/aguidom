@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const PaymentSchema = z.object({
+export const PaymentFirstSubscriptionSchema = z.object({
   phone: z
     .string()
     .min(10, { message: "El número de celular es requerido" })
@@ -10,6 +10,12 @@ export const PaymentSchema = z.object({
   dni: z.string().min(7, { message: "La cédula es requerida" }).max(8, {
     message: "La cédula no es valida",
   }),
+});
+
+export const PaymentSchema = z.object({
+  reference: z
+    .string()
+    .min(4, { message: "El número de referencia es requerido" }),
 });
 export const RunnerEditSchema = z.object({
   id: z.string().min(1, { message: "El id es requerido" }),
@@ -45,5 +51,5 @@ export const RemoveRunnerSchema = z.object({
   }),
 });
 
-export type ApiRequestPayment = z.infer<typeof PaymentSchema>;
+export type ApiRequestPayment = z.infer<typeof PaymentFirstSubscriptionSchema>;
 export type ApiRequestRunnerEdit = z.infer<typeof RunnerEditSchema>;

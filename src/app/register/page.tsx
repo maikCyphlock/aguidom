@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import * as z from "zod";
 import { ZodError } from "zod";
 
-import { FormSubmitBtn } from "../profile/[id]/FormSubmitBtn";
+import { FormSubmitBtn } from "../../components/FormSubmitBtn";
 import { toast } from "sonner";
 
 const registerSchema = z.object({
