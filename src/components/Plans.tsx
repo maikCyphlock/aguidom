@@ -70,9 +70,9 @@ function DumbbellIcon() {
         rx="8"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <rect
         x="160"
@@ -82,25 +82,25 @@ function DumbbellIcon() {
         rx="8"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <path
         d="M200,80h24a8,8,0,0,1,8,8v80a8,8,0,0,1-8,8H200"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <path
         d="M56,176H32a8,8,0,0,1-8-8V88a8,8,0,0,1,8-8H56"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <line
         x1="96"
@@ -109,9 +109,9 @@ function DumbbellIcon() {
         y2="128"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <line
         x1="232"
@@ -120,9 +120,9 @@ function DumbbellIcon() {
         y2="128"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
       <line
         x1="8"
@@ -131,9 +131,9 @@ function DumbbellIcon() {
         y2="128"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
     </svg>
   );

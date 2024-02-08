@@ -86,6 +86,7 @@ export default async function Account({ id }: { id: string }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            {/* // TODO: controls overflow when there are more than 10 payments */}
             {payments &&
               payments?.map((payment) => (
                 <div

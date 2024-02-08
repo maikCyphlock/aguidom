@@ -12,14 +12,14 @@ const baseUrl =
 
 export async function dynamicBlurDataUrl(url: string) {
   const base64str = await fetch(
-    `${baseUrl}/_next/image?url=${url}&w=16&q=75`,
+    `${baseUrl}/_next/image?url=${url}&w=16&q=75`
   ).then(async (res) =>
-    Buffer.from(await res.arrayBuffer()).toString("base64"),
+    Buffer.from(await res.arrayBuffer()).toString("base64")
   );
 
   const blurSvg = `
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'>
-      <filter id='b' color-interpolation-filters='sRGB'>
+      <filter id='b' colorInterpolationFilters='sRGB'>
         <feGaussianBlur stdDeviation='1' />
       </filter>
 
