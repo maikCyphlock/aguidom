@@ -21,7 +21,7 @@ import { Label } from "@/components/ui/label";
 
 import { Switch } from "@/components/ui/switch";
 
-import { getProfileById, getRunnersByProfileId } from "@/queries/db";
+import { getProfileById, getRunnersByProfileId, getPaymentByProfileId } from "@/queries/db";
 import { EditServerAction, RemoveServerAction } from "./actions";
 import { FormSubmitBtn } from "../../../components/FormSubmitBtn";
 import FormClient from "../../../components/FormClient";
@@ -30,7 +30,7 @@ export default async function Account({ id }: { id: string }) {
   const profiles = await getProfileById(id);
 
   const runners = await getRunnersByProfileId(id);
-
+  const payments = await getPaymentByProfileId(id);
   return (
     <div className="flex flex-col h-screen">
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
@@ -80,20 +80,31 @@ export default async function Account({ id }: { id: string }) {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Notificaciones</CardTitle>
+            <CardTitle>Pagos</CardTitle>
             <CardDescription>
-              Manage your notification preferences.
+              lista de pagos
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="email-notifications">Email Notifications</Label>
-              <Switch id="email-notifications" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="push-notifications">Push Notifications</Label>
-              <Switch id="push-notifications" />
-            </div>
+            {
+              payments?.map((payment) => (
+                <div
+                  key={payment?.id}
+                  className="flex gap-4 border rounded-sm p-4 w-1/2"
+                >
+
+                  <div className="flex  gap-4 basis-full justify-between">
+                    <span>nro de referencia: {payment?.reference}</span>
+
+                    <span className=" text-pretty">fecha de pago: {new Intl.DateTimeFormat('es-ES').format(new Date(payment?.created_at))}</span>
+
+                    <span className=" text-pretty">{
+                      payment?.payment_is_verified === 'verified' ? <div className="flex gap-2 items-center text-green-500"><small>verificado</small><CheckCircleIcon className=" fill-green-500" /></div> : payment?.payment_is_verified === 'pending' ? <div className="flex gap-2 items-center text-orange-500"><small>pendiente</small><ClockCountdownIcon className=" fill-orange-500" /> </div> : <div className="flex text-red-500 gap-2 items-center"> <small>Error al verificar</small><WarningCircle className=" fill-red-500" /> </div>
+                    }</span>
+                  </div>
+                </div>
+              ))
+            }
           </CardContent>
         </Card>
         <Card>
@@ -284,6 +295,32 @@ function ArrowLeftIcon(props) {
     </svg>
   );
 }
+
+function CheckCircleIcon(props) {
+  return (
+    <svg  {...props} xmlns="http://www.w3.org/2000/svg" width="24"
+      height="24" fill="currentColor" viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"></path></svg>
+
+  );
+
+}
+
+function ClockCountdownIcon(props) {
+  return (
+    <svg {...props} width="24"
+      height="24" xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 256 256"><path d="M232,136.66A104.12,104.12,0,1,1,119.34,24,8,8,0,0,1,120.66,40,88.12,88.12,0,1,0,216,135.34,8,8,0,0,1,232,136.66ZM120,72v56a8,8,0,0,0,8,8h56a8,8,0,0,0,0-16H136V72a8,8,0,0,0-16,0Zm40-24a12,12,0,1,0-12-12A12,12,0,0,0,160,48Zm36,24a12,12,0,1,0-12-12A12,12,0,0,0,196,72Zm24,36a12,12,0,1,0-12-12A12,12,0,0,0,220,108Z"></path></svg>
+
+  );
+
+}
+function WarningCircle(props) {
+  return (
+    <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path></svg>
+
+  );
+
+}
+
 
 const calculateAge = (birthdateTimestamp: number): number => {
   const birthdate = new Date(birthdateTimestamp);
