@@ -86,7 +86,7 @@ export default async function Account({ id }: { id: string }) {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {
+            {payments &&
               payments?.map((payment) => (
                 <div
                   key={payment?.id}
