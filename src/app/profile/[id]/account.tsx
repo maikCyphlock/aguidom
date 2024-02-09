@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-
+import NavbarBackBtn from "./navbarBackBtn";
 import {
   CardTitle,
   CardDescription,
@@ -19,8 +19,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { Switch } from "@/components/ui/switch";
-
 import { getProfileById, getRunnersByProfileId, getPaymentByProfileId } from "@/queries/db";
 import { EditServerAction, RemoveServerAction } from "./actions";
 import { FormSubmitBtn } from "../../../components/FormSubmitBtn";
@@ -34,32 +32,21 @@ export default async function Account({ id }: { id: string }) {
   return (
     <div className="flex flex-col h-screen">
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
-        <div className="flex items-center gap-4">
-          <Button
-            className="group relative inline-flex  items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-zinc-800  font-medium text-zinc-100 hover:text-zinc-800 transition-all fill-zinc-100 hover:fill-zinc-800 [box-shadow:0px_4px_1px_#a3a3a3] active:translate-y-[2px] active:shadow-none"
-            size="icon"
-          >
-            <ArrowLeftIcon className="h-4 w-4" />
-            <span className="sr-only">Back</span>
-          </Button>
-          <h1 className="font-semibold text-lg md:text-xl">
-            Configuración de perfil
-          </h1>
-        </div>
+        <NavbarBackBtn />
         <Card>
           <CardHeader className="flex-row items-center gap-2">
             <CardTitle className="basis-full">Mi perfil</CardTitle>
             <Button
               asChild
               size="sm"
-              className="group relative inline-flex  items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-zinc-800 px-6 font-medium text-zinc-100 hover:text-zinc-800 transition-all [box-shadow:0px_4px_1px_#a3a3a3] active:translate-y-[2px] active:shadow-none self-end"
+              className="group relative inline-flex  items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-transparent px-6 font-medium text-zinc-100 hover:text-zinc-800 transition-all [box-shadow:0px_4px_1px_#a3a3a3] active:translate-y-[2px] active:shadow-none self-end"
             >
               <a href="/profile/edit">Editar</a>
             </Button>
             <Button
               asChild
               size="sm"
-              className="group relative inline-flex  items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-zinc-500 px-6 font-medium text-zinc-100 hover:text-zinc-800 transition-all [box-shadow:0px_4px_1px_#a3a3a3] active:translate-y-[2px] active:shadow-none"
+              className="group relative inline-flex  items-center justify-center overflow-hidden rounded-md border border-zinc-200 bg-zinc-300 px-6 font-mediumhover:text-zinc-800 transition-all [box-shadow:0px_4px_1px_#a3a3a3] active:translate-y-[2px] active:shadow-none"
             >
               <a href="/subscribe">Pagar la membresía</a>
             </Button>
@@ -91,7 +78,7 @@ export default async function Account({ id }: { id: string }) {
               payments?.map((payment) => (
                 <div
                   key={payment?.id}
-                  className="flex gap-4 border rounded-sm p-4 w-1/2"
+                  className="flex gap-4 border rounded-sm p-4 w-full| md:w-1/2"
                 >
 
                   <div className="flex  gap-4 basis-full justify-between">
@@ -117,7 +104,7 @@ export default async function Account({ id }: { id: string }) {
             <Button
               asChild
               size="sm"
-              className="cursor-pointer transition-all bg-zinc-500 text-white  rounded-lgborder-zinc-600 border-b-[2px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] hover:text-zinc-900 active:border-b-[2px] active:brightness-90 active:translate-y-[2px] self-end"
+              className="cursor-pointer transition-all bg-zinc-300 text-zinc-800  rounded-lgborder-zinc-600 border-b-[2px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[4px] hover:text-zinc-900 active:border-b-[2px] active:brightness-90 active:translate-y-[2px] self-end"
             >
               <a href="/profile/runner">Agregar</a>
             </Button>
@@ -136,19 +123,20 @@ export default async function Account({ id }: { id: string }) {
                         className="h-24 w-24 rounded-full object-cover border"
                         alt=""
                       />
-                      <div className="flex gap-8">
+                      <div className="flex text-xs gap-8">
                         <div className="flex flex-col gap-2">
-                          {" "}
+
                           <span>{runner?.full_name}</span>
-                          <span>
-                            Edad: {calculateAge(runner?.date_of_birth)}
+                          <span className="text-zinc-500">
+                            Edad:
                           </span>
-                          <span>condición medica:</span>
+                          {calculateAge(runner?.date_of_birth)}
+                          <span className="text-zinc-500">condición medica:</span>
                           {runner?.medical_conditions}
                         </div>
                         <div className="flex flex-col gap-2">
                           {" "}
-                          <span>fecha de inscripción:</span>
+                          <span className="text-zinc-500">fecha de inscripción:</span>
                           {new Date(runner?.created_at).toLocaleDateString()}
                         </div>
                         <div className="flex gap-2">
@@ -277,25 +265,7 @@ export function TrashIcon(props) {
   );
 }
 
-function ArrowLeftIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m12 19-7-7 7-7" />
-      <path d="M19 12H5" />
-    </svg>
-  );
-}
+
 
 function CheckCircleIcon(props) {
   return (

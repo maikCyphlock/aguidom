@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 export default function Component() {
   const [show, toShow] = useState(false);
   const supabase = createClientComponentClient();
@@ -26,11 +27,24 @@ export default function Component() {
     const password = formData.get("password")?.toString();
     console.log(email, password);
     if (!email || !password) return;
-    await supabase.auth.signInWithPassword({
-      email: email,
-      password: password,
-    });
-    router.refresh();
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+
+      if (error) {
+        console.error()
+        return toast.error("contraseña o correo invalido");
+      }
+
+      toast.success("inicio exitoso");
+
+      router.push(`/profile/${data.session.user.id}`);
+    } catch (error) {
+      toast.error("credenciales invalidas");
+    }
   };
 
   return (
