@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "contentlayer &&  build next build  ",
+    "build": "contentlayer build &&  build next build  ",
+    "build:markdown": "contentlayer build ",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest "
