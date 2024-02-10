@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Aguidom",
   description: "club de atletismo",
 };
-
+// hola
 export default function RootLayout({
   children,
 }: {

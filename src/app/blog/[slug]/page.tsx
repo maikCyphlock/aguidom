@@ -24,7 +24,7 @@ async function getPostFromParams(slug: string) {
 }
 export async function generateMetadata(
   { params }: pageProps,
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   // read route params
   const doc = await getPostFromParams(params.slug);
@@ -52,7 +52,7 @@ const page: FC<pageProps> = async ({ params }) => {
       <div className="grid relative overflow-hidden place-items-center p-32 ">
         <img
           src={doc.cover_url}
-          className="w-full brightness-50 absolute inset-0 -z-10 h-screen object-cover"
+          className="w-full  brightness-50 absolute inset-auto -z-10  object-cover"
           alt=""
         />
         <h1 className="text-4xl font-bold">{doc.title}</h1>
