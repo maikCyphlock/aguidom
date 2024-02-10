@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@fontsource/ibm-plex-serif";
-
+import { Analytics } from "@vercel/analytics/react";
 import "@fontsource-variable/onest";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -23,6 +23,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Toaster richColors />
+        <Analytics />
       </body>
     </html>
   );
