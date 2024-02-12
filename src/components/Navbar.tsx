@@ -5,7 +5,6 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
@@ -14,7 +13,7 @@ import UserMenu from "./userMenu";
 function Navbar() {
   return (
     <>
-      <div
+      <nav
         id="NavbarRoot"
         className="lg:flex py-3 items-center border-b bg-zinc-950/80 backdrop-blur-md border-zinc-900  justify-around  hidden"
       >
@@ -38,9 +37,9 @@ function Navbar() {
           </a>
         </div>
         <UserMenu />
-      </div>
+      </nav>
       <Menubar className="lg:hidden z-20 justify-end bg-transparent border-transparent   sticky top-4 mr-12 shadow-none">
-        <MenubarMenu >
+        <MenubarMenu>
           <MenubarTrigger className="border bg-zinc-800 border-zinc-700 shadow-lg">
             <HamburgerIcon />
           </MenubarTrigger>
