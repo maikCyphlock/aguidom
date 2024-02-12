@@ -22,7 +22,7 @@ const page: FC<pageProps> = async () => {
             {doc.cover_url && (
               <img
                 src={doc.cover_url}
-                className="w-full brightness-50 absolute inset-0 z-0 h-screen object-cover"
+                className="w-full brightness-[0.3] absolute inset-0 z-0  object-scale-down "
                 alt=""
               />
             )}
