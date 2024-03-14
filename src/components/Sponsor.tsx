@@ -2,7 +2,16 @@ import React from "react";
 
 function Sponsor() {
   return (
-    <section className="bg-white -mt-32 dark:from-zinc-950 bg-gradient-to-l dark:to-zinc-950  dark:via-zinc-900 rounded-md">
+    <section
+      style={{
+        background:
+          "radial-gradient(circle at top,#202020, #000000) padding-box, linear-gradient(#797979 20%, rgba(31, 31, 31, 0.3) 90%) border-box",
+
+        borderStyle: "solid",
+        borderColor: "#0000",
+      }}
+      className="bg-white border -mt-32 dark:from-zinc-950 bg-gradient-to-l dark:to-zinc-950  dark:via-zinc-900 rounded-md"
+    >
       <div className="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
         <h2 className="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
           Nuestros patrocinadores
