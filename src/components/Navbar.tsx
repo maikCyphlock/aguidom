@@ -26,6 +26,10 @@ function Navbar() {
           <a href="/" className="hover:underline text-center   ">
             Inicio
           </a>
+          <a href="/race" className="hover:underline text-center   ">
+            Carrera
+          </a>
+          
           <a href="/blog" className="hover:underline text-center  ">
             noticias
           </a>
@@ -45,7 +49,10 @@ function Navbar() {
           </MenubarTrigger>
           <MenubarContent className=" mr-6">
             <MenubarItem asChild>
-              <a href="/">Inicio</a>
+              <a href="/">Club Aguidom</a>
+            </MenubarItem>
+            <MenubarItem asChild>
+              <a href="/race">Carrera</a>
             </MenubarItem>
             <MenubarSeparator />
             <MenubarItem asChild>
