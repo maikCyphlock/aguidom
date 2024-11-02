@@ -78,7 +78,7 @@ export default function Component() {
                   placeholder="04269599721"
                   value={numeroTelefono}
                 
-                  onChange={(e) => setNumeroTelefono(e.target.value)}
+               
                 />
               </div>
               <Button onClick={enviarAWhatsApp} className="w-full" disabled={!numeroTelefono}>
