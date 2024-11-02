@@ -9,7 +9,7 @@ import { CheckCircle, Download, Send } from "lucide-react"
 
 export default function Component() {
   const [paso, setPaso] = useState(1)
-  const numeroTelefono ="04269599721"
+  const numeroTelefono ="+584269599721"
 
   const pasosTotales = 3
   const urlPlantillaExcel = "/inscripcion-aguidom.xlsx" // Reemplaza con la URL real de tu plantilla
