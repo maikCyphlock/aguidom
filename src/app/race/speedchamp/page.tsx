@@ -59,6 +59,8 @@ export default function Component() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Paso 1: Descargar Plantilla Excel</h3>
               <p>Descarga la plantilla Excel para registrar atletas en la competición.</p>
+              <p>NOTA: el pago se hará a tasa Paralelo</p>
+              <p>Dudas: comuniquese al 0426-9599-721</p>
               <Button onClick={manejarDescarga} className="w-full">
                 <Download className="mr-2 h-4 w-4" /> Descargar Plantilla
               </Button>
