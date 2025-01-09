@@ -1,71 +1,62 @@
 import React from "react";
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "./ui/carousel";
 import { Card } from "./ui/card";
 
 async function Win_case() {
   const Items = [
     {
-      imgUrl: "slider-1.webp",
-      title: "Alberto ponte",
+      imgUrl: "jesus-v.jpg",
+      title: "jesus valenzuela",
     },
     {
       imgUrl: "slider-2.webp",
-      title: "Alberto ponte",
+      title: "",
     },
     {
-      imgUrl: "slider-3.webp",
-      title: "Alberto ponte",
+      imgUrl: "jesus-alberto.jpg",
+      title: "",
     },
     {
       imgUrl: "slider-4.webp",
-      title: "Alberto ponte",
+      title: "",
     },
     {
       imgUrl: "slider-5.webp",
-      title: "Alberto ponte",
+      title: "",
     },
     {
       imgUrl: "slider-6.webp",
-      title: "Alberto ponte",
+      title: "",
     },
   ];
+
   return (
-    <section>
-      {" "}
-      <h2 className="text-center text-3xl md:text-6xl text-zinc-100 mb-12 md:mb-32">
-        Atletas que entrenan con <span className="text-sky-300 ">nosotros</span>
+    <section className="container mx-auto px-4">
+      <h2 className="text-center text-4xl md:text-7xl font-extrabold  mb-16 md:mb-32">
+        Atletas que entrenan con{" "}
+        <span className="text-white underline decoration-orange-400 decoration-4 underline-offset-4">
+          nosotros
+        </span>
       </h2>
-      <Carousel className="mx-auto w-full max-w-52 md:max-w-xl lg:max-w-6xl ">
-        <CarouselContent>
-          {Items.map((element, index) => (
-            <CarouselItem
-              key={index}
-              className=" basis-full  md:basis-1/2 lg:basis-1/3"
-            >
-              <div className="p-1">
-                <Card className="bg-zinc-900 overflow-hidden ">
-                  <Image
-                    src={`/${element.imgUrl}`}
-                    width={800}
-                    height={800}
-                    className="w-full  aspect-square object-cover"
-                    alt=""
-                  />
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+        {Items.map((element, index) => (
+          <Card
+            key={index}
+            className={`bg-zinc-900 overflow-hidden transition-transform hover:scale-[1.02] ${
+              index === 0 ? "md:col-span-2 md:row-span-2" : ""
+            }`}
+          >
+            <Image
+              src={`/${element.imgUrl}`}
+              width={800}
+              height={800}
+              className="w-full h-full object-cover"
+              alt={element.title}
+            />
+          </Card>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,140 +1,112 @@
-export default function Component() {
+'use client'
+
+import { motion } from "framer-motion"
+import { MapPin, Clock, Calendar } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+
+export default function SchedulePage() {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  }
+
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
-      <div className="container  items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
-        <div className="space-y-3">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+    <div className=" bg-gradient-to-b from-background to-background/80 p-4 md:p-8">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={container}
+        className="mx-auto max-w-5xl space-y-8"
+      >
+        <motion.div variants={item} className="text-center space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             Horario del Club de Atletismo
-          </h2>
-          <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+          </h1>
+          <p className="text-muted-foreground text-lg">
             Consulta nuestro programa de entrenamiento semanal.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex pt-8  flex-col md:flex-row gap-8 justify-center items-stretch ">
-
-          <div className="flex basis-1/2 justify-center flex-col items-center gap-2">
-
-            <img className="rounded-lg w-full h-full" src="/stadium_address.png" alt="stadium_address" />
-            {/* <iframe
-              height="300"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-69.21520829200746%2C9.567288275894905%2C-69.20699000358583%2C9.573889888189486&amp;layer=mapnik"
-            ></iframe> */}
-
-          </div>
-          <div className="flex flex-col basis-1/2">
-            <div className="rounded-lg border p-4 grow">
-              <h3 className="font-bold text-lg mb-2">
-                <DumbbellIcon />
-                Lunes, Martes, Jueves
-              </h3>
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <div className="flex gap-4 ">
-                  <span className="flex flex-col gap-2 text-green-300">
-                    <span className="border border-green-300 px-2 py-1 rounded-full">
-                      Entrada
-                    </span>
-                    <span>6:00 AM</span>-<span>4:00 PM</span>
-                  </span>
-                  <span className="flex flex-col gap-2 text-red-300">
-                    <span className="border border-red-300 px-2 py-1 rounded-full">
-                      salida
-                    </span>
-                    <span>8:00 AM </span>-<span>5:30 PM</span>
-                  </span>
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div variants={item}>
+            <Card className="overflow-hidden">
+              <CardHeader className="space-y-1">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <MapPin className="h-4 w-4" />
+                  <span className="text-sm">Ubicación</span>
                 </div>
-              </div>
-            </div>
-          </div>
+                <CardTitle>Estadio José Antonio Páez</CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <iframe width="100%"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                
+                  height="300" src="https://www.openstreetmap.org/export/embed.html?bbox=-69.21650648117067%2C9.568906952315094%2C-69.20754790306093%2C9.573646561807903&amp;layer=mapnik" style={{ border: 0 }}></iframe>
+               
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item}>
+            <Card>
+              <CardHeader className="space-y-1">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Calendar className="h-4 w-4" />
+                  <span className="text-sm">Horario de Entrenamiento</span>
+                </div>
+                <CardTitle>Lunes, Martes, Jueves</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                      <span>Sesión Mañana</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <Badge variant="outline" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
+                        6:00 AM
+                      </Badge>
+                      <Badge variant="outline" className="bg-destructive/10 text-red-500 border-destructive/20">
+                        8:00 AM
+                      </Badge>
+                    </div>
+                  </div>
+                  <Separator />
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                      <span>Sesión Tarde</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <Badge variant="outline" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">
+                        4:00 PM
+                      </Badge>
+                      <Badge variant="outline" className="bg-destructive/10 text-red-500 border-destructive/20">
+                        6:00 PM
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
-        <span className="text-zinc-500 ">Estadio Jose Antonio Páez</span>
-      </div>
-
-    </section>
-  );
-}
-
-function DumbbellIcon() {
-  return (
-    <svg
-      className="w-6 h-6"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-    >
-      <rect width="256" height="256" fill="none" />
-      <rect
-        x="56"
-        y="56"
-        width="40"
-        height="144"
-        rx="8"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <rect
-        x="160"
-        y="56"
-        width="40"
-        height="144"
-        rx="8"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <path
-        d="M200,80h24a8,8,0,0,1,8,8v80a8,8,0,0,1-8,8H200"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <path
-        d="M56,176H32a8,8,0,0,1-8-8V88a8,8,0,0,1,8-8H56"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <line
-        x1="96"
-        y1="128"
-        x2="160"
-        y2="128"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <line
-        x1="232"
-        y1="128"
-        x2="248"
-        y2="128"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-      <line
-        x1="8"
-        y1="128"
-        x2="24"
-        y2="128"
-        fill="none"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="16"
-      />
-    </svg>
-  );
+      </motion.div>
+    </div>
+  )
 }
