@@ -11,7 +11,7 @@ type Props = {
 };
 
 interface pageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 async function getPostFromParams(slug: string) {
   const doc = allDocs.find((doc) => doc.slugAsParams === slug);
@@ -22,10 +22,8 @@ async function getPostFromParams(slug: string) {
 
   return doc;
 }
-export async function generateMetadata(
-  { params }: pageProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: pageProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   // read route params
   const doc = await getPostFromParams(params.slug);
 
@@ -37,7 +35,7 @@ export async function generateMetadata(
       description: doc.description,
       images: [
         {
-          url: doc.cover_url,
+          url: doc.cover_url!,
           width: 800,
           height: 600,
         },
@@ -45,21 +43,23 @@ export async function generateMetadata(
     },
   };
 }
-const page: FC<pageProps> = async ({ params }) => {
+ async function page ( props: { params: any; }) {
+  const params = await props.params;
   const doc = await getPostFromParams(params.slug);
   return (
-    <div className=" flex flex-col gap-8">
-      <div className="grid relative overflow-hidden place-items-center p-32 ">
-        <img
-          src={doc.cover_url}
-          className="w-full  brightness-50 absolute inset-auto -z-10  object-cover"
-          alt=""
-        />
-        <h1 className="text-4xl font-bold">{doc.title}</h1>
-        <small className=" text-2xl  font-thin ">{doc.description}</small>
+    <div className="container mx-auto px-4 lg:px-0 mt-24 lg:flex lg:flex-row lg:gap-8 lg:items-start">
+      <div className="w-full lg:w-1/2 lg:pr-12">
+        <div className="relative overflow-hidden rounded-2xl">
+          <img
+            src={doc.cover_url}
+            className="brightness-50 w-full h-96 object-cover"
+            alt=""
+          />
+        </div>
+   
       </div>
-
-      <article className="container mx-auto prose dark:prose-invert ">
+      <hr className="my-12" />
+      <article className="w-full lg:w-1/2 prose dark:prose-invert lg:mt-0 mt-6 lg:pl-12">
         <Mdx code={doc.body.code}></Mdx>
       </article>
     </div>
