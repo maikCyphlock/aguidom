@@ -33,9 +33,9 @@ export default function Home() {
                 </p>
                 <div className="flex flex-col items-center gap-2">
                     
-                    <button className="px-4 py-2 bg-blue-400 text-black rounded-md">
+                    <a href='https://tally.so/r/mVo8av' rel='noopener noreferrer' target='_blank' className="px-4 py-2  hover:bg-blue-900 bg-blue-400 text-blue-950 hover:text-blue-200 rounded-md">
                         Regístrate ahora
-                    </button>
+                    </a>
                 </div>
 
             </div>
