@@ -22,7 +22,7 @@ import ClientWrapper from "./clientWrapper";
       url: "https://aguidom.es/nitroguidom2024",
       images: [
         {
-          url: "https://aguidom.es/events/nitroguidom/nitroguidom2024-banner.png",
+          url: "https://aguidom.es/events/nitroguidom2024-banner.png",
           alt: "Nitroguidom 2024 Banner",
         },
       ],
@@ -35,7 +35,7 @@ import ClientWrapper from "./clientWrapper";
         "🏃‍♂️💨 Nitroguidom 2024 desafía a los jóvenes atletas. 📅 22 de febrero 2024 🎯 Edades: 5-18 años 🏆 Distancias 60m a 1500m. ¡Inscríbete ahora!",
       images: [
         {
-          url: "https://aguidom.es/events/nitroguidom/nitroguidom2024-banner.png",
+          url: "https://aguidom.es/events/nitroguidom2024-banner.png",
           alt: "Nitroguidom 2024 Banner",
         },
       ],
