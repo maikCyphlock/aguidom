@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ClientWrapper from "./clientWrapper";
- const metadata: Metadata = {
+ export const metadata: Metadata = {
     title: "Nitroguidom 2024 - Competencia de Atletismo Juvenil",
     description:
       "🏃‍♂️💨 ¡Atención jóvenes atletas! Nitroguidom 2024 está aquí para desafiar tu velocidad y resistencia. 📅 22 de febrero de 2024 🎯 Edades: 5-18 años 🏆 Carreras desde 60m hasta 1500m. ¡Inscríbete ahora!",
