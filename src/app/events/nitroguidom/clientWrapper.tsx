@@ -8,37 +8,9 @@ const RainbowButton = (href: any) => {
 
 
   return (
-    <a href='#tally' rel='noopener noreferrer'  className="flex items-center justify-center ">
-      <motion.button
-        className="relative px-6 py-3 text-white font-semibold rounded-full overflow-hidden bg-black shadow-md"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {/* Arcoíris rotativo */}
-        <motion.div
-          className="absolute inset-0   border-[15px] "
-          style={{
-            borderImageSource:
-              "linear-gradient(40deg, #D63745, #DE663C, #EFB44B, #548540, #6F9EC7, #69265F, #493F84)",
-            borderImageSlice: 1,
-          }}
-          animate={{
-            rotate: -360,
-          }}
-          transition={{
-            repeat: Infinity,
-            repeatDelay: 2,
-            delay: 2,
-            duration: 12,
-            ease: "easeInOut",
-          }}
-        />
-
-        {/* Fondo del botón */}
-        <span className="absolute inset-0 rounded-full bg-black m-[1px]"></span>
-        {/* Texto */}
-        <span className="relative">Regístrate ahora</span>
-      </motion.button>
+    <a href='https://forms.gle/gGYjAkZwh77cPfxUA' rel='noopener noreferrer' target='_blank'  className="rainbow-btn">
+     Regístrate ahora
+  
     </a>
   );
 };
@@ -63,10 +35,10 @@ function ClientWrapper() {
         </div>
         <div className="my-12 flex flex-col items-center justify-center">
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-[#D63745] via-[#DE663C] to-[#EFB44B]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 text-white">
             Únete a Nitroguidom
           </h1>
-          <p className="mb-6">
+          <p className="mb-6 text-md">
             Participa en la competencia de atletismo más emocionante del año.
           </p>
           <div className="flex flex-col items-center gap-2">
