@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import "@fontsource-variable/onest";
 import "@fontsource-variable/league-spartan";
 import "./globals.css";
+import 'atropos/css'
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
@@ -39,6 +40,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="manifest" href="/manifest.json" />
+        <script async src="https://tally.so/widgets/embed.js"></script>
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
