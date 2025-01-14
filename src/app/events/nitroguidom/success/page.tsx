@@ -54,7 +54,7 @@ const Ticket = React.forwardRef((props, ref) => {
           id="name"
           name="name"
           value={property.name}
-          onChange={handleInputChange}
+          onChange={(e)=> handleInputChange(e)}
           className="mb-4 w-full max-w-xs"
         />
         <label className="text-white mb-2" htmlFor="lastname">
@@ -65,7 +65,7 @@ const Ticket = React.forwardRef((props, ref) => {
           id="lastname"
           name="lastname"
           value={property.lastname}
-          onChange={handleInputChange}
+          onChange={(e)=> handleInputChange(e)}
           className="mb-4 w-full max-w-xs"
         />
        
@@ -100,7 +100,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen w-full flex flex-col items-center justify-center p-4">
+      <h2 className="my-24 text-2xl font-bold">comparte tu inscripcion por las redes sociales</h2>
       <Ticket ref={ref} />
       <button
         className="flex gap mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition"
