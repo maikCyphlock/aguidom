@@ -13,7 +13,7 @@ const RainbowButton = () => {
       href='https://forms.gle/gGYjAkZwh77cPfxUA' 
       rel='noopener noreferrer' 
       target='_blank' 
-      className="relative inline-flex items-center justify-center px-8 py-3 font-bold text-white transition-all duration-200 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+      className="rainbow-btn"
     >
       Regístrate ahora
     </a>
