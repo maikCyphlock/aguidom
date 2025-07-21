@@ -69,6 +69,33 @@
   }
 }
 
+/* Performance optimized animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 468px 104px;
+}
+
 /* MY CSS */
 
 main {
@@ -146,6 +173,7 @@ main {
  font-weight: 500;
  color: #fff;
  z-index: 2;
+ transform: translateZ(0); /* Enable hardware acceleration */
 }
 
 .rainbow-btn::after {
@@ -175,6 +203,7 @@ main {
  -webkit-mask-clip: var(--m-o);
  mask-composite: exclude;
  -webkit-mask-composite: destination-out;
+ transform: translateZ(0) rotate(0deg); /* Enable hardware acceleration */
  filter: hue-rotate(0);
  animation: rotate-hue linear 500ms infinite;
  animation-play-state: paused;
@@ -186,7 +215,7 @@ main {
 
 @keyframes rotate-hue {
  to {
-  filter: hue-rotate(1turn);
+  transform: translateZ(0) rotate(360deg);
  }
 }
 
