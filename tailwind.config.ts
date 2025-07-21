@@ -20,15 +20,16 @@ const config = {
   	extend: {
   		fontFamily: {
   			sans: [
-  				'Onest Variable',
+  				'var(--font-onest)',
+  				'system-ui',
   				'sans-serif'
   			],
   			serif: [
-  				'IBM plex Serif',
+  				'var(--font-ibm-plex-serif)',
   				'serif'
   			],
   			spartan: [
-  				'League spartan',
+  				'var(--font-league-spartan)',
   				'sans-serif'
   			]
   		},

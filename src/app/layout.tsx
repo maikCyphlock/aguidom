@@ -1,57 +1,69 @@
 import type { Metadata } from "next";
-import "@fontsource/ibm-plex-serif";
 import { Analytics } from "@vercel/analytics/react";
-import "@fontsource-variable/onest";
-import "@fontsource-variable/league-spartan";
+import { Onest, IBM_Plex_Serif, League_Spartan } from "next/font/google";
 import "./globals.css";
 import 'atropos/css'
 import Navbar from "@/components/Navbar";
+
+// Optimize font loading
+const onest = Onest({
+  subsets: ['latin'],
+  variable: '--font-onest',
+  display: 'swap',
+});
+
+const ibmPlexSerif = IBM_Plex_Serif({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-ibm-plex-serif',
+  display: 'swap',
+});
+
+const leagueSpartan = League_Spartan({
+  subsets: ['latin'],
+  variable: '--font-league-spartan',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: "Aguidom",
   description: "club de atletismo",
   icons: {
     icon: "/icon.svg",
-  }
+  },
+  manifest: "/manifest.json",
 };
-// hola
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${onest.variable} ${ibmPlexSerif.variable} ${leagueSpartan.variable}`}>
       <head>
-        <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
-        <meta name="google-adsense-account" content="ca-pub-9018951160643855"></meta>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9018951160643855"
-     crossorigin="anonymous"></script>
-        <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-icon-192x192.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <script async src="https://tally.so/widgets/embed.js"></script>
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-        <meta name="theme-color" content="#ffffff" />
-      </head>
-      <body className="relative h-full w-full bg-zinc-950 min-h-screen">
+        {/* Preconnect to external domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://tally.so" />
         
-    
-
+        {/* Essential meta tags */}
+        <meta name="google-adsense-account" content="ca-pub-9018951160643855" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        {/* Async load external scripts */}
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9018951160643855"
+          crossOrigin="anonymous"
+        />
+        <script async src="https://tally.so/widgets/embed.js" />
+      </head>
+      <body className="relative h-full w-full bg-zinc-950 min-h-screen antialiased">
         <Navbar />
         {children}
-      
         <Analytics />
       </body>
     </html>
