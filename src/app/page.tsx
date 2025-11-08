@@ -1,32 +1,28 @@
 
 import Experience from "@/components/Experience";
-import Win_case from "@/components/Win_case";
+import WinCase from "@/components/WinCase";
 import Plans from "@/components/Plans";
 import Pricing from "@/components/Pricing";
 import { Sponsor } from "@/components/Sponsor";
 
 import Link from "next/link";
 import { Hero } from "../components/Hero";
+import InstagramClient from "@/components/instagramClient";
 
 export default function Home() {
   return (
     <div className="mx-auto scroll-smooth">
       <main>
-        {/* <section className="relative min-h-screen flex items-center justify-center pt-4">
-        <img src="circle.png" alt="runner" className="w-[300px] lg:w-[550px] z-10 absolute h-auto mb-6" />
-          <h1 className="text-[3.5rem] lg:text-[12rem]  font-black z-20 text-white mb-6 "> AGUIDOM</h1>
-     
-          <img src="runner.png" alt="runner" className="w-[140px] lg:w-[350px] z-20 absolute h-auto mb-6" />
-      
-        </section> */}
+
         <Hero />
       </main>
       <Sponsor />
       <div className="lg:px-20 space-y-[200px]">
         <Experience />
 
-        <Win_case />
+        <WinCase />
         <Plans />
+        <InstagramClient />
         <Pricing />
 
       </div>

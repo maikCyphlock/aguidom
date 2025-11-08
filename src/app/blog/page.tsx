@@ -1,8 +1,7 @@
 import React from "react";
 import { FC } from "react";
 import { allDocs } from "contentlayer/generated";
-import { notFound } from "next/navigation";
-
+import InstagramClient from '../../components/instagramClient'
 interface pageProps {
   params: { slug: string };
 }
@@ -11,6 +10,8 @@ const page: FC<pageProps> = async () => {
   const doc = allDocs;
   return (
     <section className="mt-12 flex flex-col gap-8 pb-32">
+
+      <InstagramClient />
       <h1 className="text-4xl text-center">Noticias</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:px-8 px-2">
         {doc.map((doc) => (
@@ -35,6 +36,7 @@ const page: FC<pageProps> = async () => {
           </a>
         ))}
       </div>
+
     </section>
   );
 };
