@@ -1,6 +1,6 @@
 import React from "react";
 
-function running_stadium({ className }) {
+function RunningStadium({ className }) {
   return (
     <svg
       className={className}
@@ -92,4 +92,4 @@ function running_stadium({ className }) {
   );
 }
 
-export default running_stadium;
+export default RunningStadium;

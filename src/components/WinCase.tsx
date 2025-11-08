@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Card } from "./ui/card";
 
-async function Win_case() {
+async function WinCase() {
   const Items = [
     {
       imgUrl: "jesus-v.jpg",
@@ -13,7 +13,7 @@ async function Win_case() {
       title: "",
     },
     {
-      imgUrl: "jesus-alberto.jpg",
+      imgUrl: "emiliano.webp",
       title: "",
     },
     {
@@ -21,11 +21,11 @@ async function Win_case() {
       title: "",
     },
     {
-      imgUrl: "slider-5.webp",
+      imgUrl: "isabella.webp",
       title: "",
     },
     {
-      imgUrl: "slider-6.webp",
+      imgUrl: "club-aguidom.webp",
       title: "",
     },
   ];
@@ -43,9 +43,8 @@ async function Win_case() {
         {Items.map((element, index) => (
           <Card
             key={index}
-            className={`bg-zinc-900 overflow-hidden transition-transform hover:scale-[1.02] ${
-              index === 0 ? "md:col-span-2 md:row-span-2" : ""
-            }`}
+            className={`bg-zinc-900 overflow-hidden transition-transform hover:scale-[1.02] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
+              }`}
           >
             <Image
               src={`/${element.imgUrl}`}
@@ -61,4 +60,4 @@ async function Win_case() {
   );
 }
 
-export default Win_case;
+export default WinCase;
