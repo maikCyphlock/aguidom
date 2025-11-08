@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Card } from "./ui/card";
 
 async function WinCase() {
@@ -46,7 +45,7 @@ async function WinCase() {
             className={`bg-zinc-900 overflow-hidden transition-transform hover:scale-[1.02] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
               }`}
           >
-            <Image
+            <img
               src={`/${element.imgUrl}`}
               width={800}
               height={800}
