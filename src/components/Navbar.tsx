@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from "framer-motion"
-import { HomeIcon, NewspaperIcon, CircleIcon } from "lucide-react"
+
+import { NewspaperIcon } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, X, Home, Trophy, Calendar, User, Settings } from 'lucide-react'
+import { Menu, Home, Calendar, User } from 'lucide-react'
 import { Button } from "./ui/button"
 import Link from 'next/link'
 
@@ -35,15 +35,15 @@ function FloatingNavbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="flex items-center gap-3 px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-orange-700 transition-colors group"
+              className="flex items-center gap-3 px-4 py-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors group"
             >
               {item.icon}
-              <span className='text-sm'>{item.name}</span>
+              <span className='text-sm uppercase tracking-wider font-semibold'>{item.name}</span>
             </Link>
           ))}
         </div>
       </nav>
-     
+
       <nav className="sticky top-0 md:hidden py-2 mb-3 px-6 items-center bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-full justify-between flex basis-1/2">
         <div className="container mx-auto px-4 py-1 flex justify-between items-center">
           <Link href="/" className="text-lg font-bold text-primary">
@@ -66,11 +66,11 @@ function FloatingNavbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center gap-3 px-4 py-2 rounded-full hover:bg-gray-100 dark:hover:bg-orange-700 transition-colors"
+                    className="flex items-center gap-3 px-4 py-2 rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.icon}
-                    <span>{item.name}</span>
+                    <span className="uppercase tracking-wider font-semibold">{item.name}</span>
                   </Link>
                 ))}
               </nav>

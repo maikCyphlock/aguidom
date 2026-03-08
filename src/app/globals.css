@@ -73,7 +73,7 @@
 
 main {
   padding-top: 1rem;
-  width: min(1200px, 90vw);
+  width: 100%;
   margin: auto;
 }
 .slider {

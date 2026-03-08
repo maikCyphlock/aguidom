@@ -31,10 +31,10 @@ async function WinCase() {
 
   return (
     <section className="container mx-auto px-4">
-      <h2 className="text-center text-4xl md:text-7xl font-extrabold  mb-16 md:mb-32">
-        Atletas que entrenan con{" "}
-        <span className="text-white underline decoration-orange-400 decoration-4 underline-offset-4">
-          nosotros
+      <h2 className="text-center text-4xl md:text-6xl font-extrabold tracking-tighter mb-16 md:mb-32">
+        ATLETAS QUE ENTRENAN CON{" "}
+        <span className="text-white underline decoration-white decoration-2 underline-offset-8">
+          NOSOTROS
         </span>
       </h2>
 
@@ -42,7 +42,7 @@ async function WinCase() {
         {Items.map((element, index) => (
           <Card
             key={index}
-            className={`bg-zinc-900 overflow-hidden transition-transform hover:scale-[1.02] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
+            className={`bg-zinc-950 border border-zinc-800 overflow-hidden transition-transform hover:scale-[1.02] ${index === 0 ? "md:col-span-2 md:row-span-2" : ""
               }`}
           >
             <img
