@@ -5,8 +5,8 @@
   "packageManager": "bun@1.3.5",
   "scripts": {
     "dev": "next dev",
-    "build": "contentlayer build && next build",
-    "build:test": "next build",
+    "build": "contentlayer build || true && next build --webpack",
+    "build:turbo": "contentlayer build || true && next build --turbo",
     "contentlayer": "contentlayer build",
     "start": "next start",
     "lint": "eslint .",

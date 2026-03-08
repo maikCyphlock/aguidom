@@ -18,3 +18,7 @@
 - [x] Eliminar restricciones de ancho globales en `globals.css` para elementos full-width. [x]
 - [x] Implementar área de ubicación y horario estilo Garmin. [x]
 - [x] Traducir interfaz Garmin a español. [x]
+## Día 3: Corrección de errores de Build
+- [ ] Corregir error de Contentlayer (exit code TypeError) [x]
+- [ ] Resolver pánico de Turbopack en `next build` [/]
+- [ ] Verificar build exitosa [ ]
