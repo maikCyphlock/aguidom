@@ -1,60 +1,101 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-black text-white overflow-hidden pb-16">
-      {/* Background Image Container */}
-      <div className="absolute inset-0 z-0 h-full w-full">
-        <img
-          src="/aguidom-black.png"
-          alt="Fitness training at Aguidom"
-          className="w-full h-full object-cover object-center"
-        />
-        {/* Solid overlay for contrast, no gradients as per todo.md */}
-        <div className="absolute inset-0 bg-black/50" />
+    <section className="relative w-full min-h-[100dvh] flex flex-col text-white ">
+      {/* Background Image — full bleed */}
+      <div className="absolute inset-0 z-0 ">
+        <motion.div
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute inset-0"
+        >
+          {/* Halo Background Layer — creates the glow behind the athletes */}
+          <img
+            src="/aguidom-purp.png"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover  object-[center_30%] brightness-[0.5] blur-[100px] scale-[1.15] z-0"
+          />
+
+          {/* Main Sharp Image — sits on top of the halo */}
+          <img
+            src="/aguidom-purp.png"
+            alt="Atletas de élite en Aguidom"
+            className="absolute inset-0 w-full h-full object-cover object-[center_10%] brightness-[0.6]  scale-105 z-10"
+          />
+        </motion.div>
+
+        {/* Refined gradient overlays for text legibility — Much stronger for contrast
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black via-black/70 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/10 z-20 pointer-events-none" /> */}
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-12 flex flex-col items-center justify-center text-center mt-20 md:mt-32 pb-12">
-        <p
-          className="text-xs md:text-sm font-black tracking-[0.4em] uppercase mb-6 text-orange-500 animate-in fade-in slide-in-from-bottom-4 duration-700"
-        >
-          LOGRA TUS OBJETIVOS
-        </p>
-
-        {/* Nike Style Typography */}
-        <div className="relative mb-8 w-full max-w-7xl flex justify-center">
-          <h1
-            className="font-spartan font-black italic uppercase tracking-tighter leading-[0.8] text-white animate-in zoom-in-95 fade-in duration-1000 select-none pb-4"
-            style={{ fontSize: 'clamp(3.5rem, 15vw, 14rem)' }}
+      {/* Content — Re-positioned to be lower and left-aligned to clear the faces */}
+      <div className="relative z-30 mt-auto pb-12 md:pb-16 px-6 lg:px-16">
+        <div className="container mx-auto">
+          {/* Tagline */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="flex items-center gap-4 mb-4"
           >
-            AGUIDOM
-          </h1>
-        </div>
+            <span className="w-8 h-[1px] bg-white/40" />
+            <p className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-white/90 font-semibold drop-shadow-md">
+              Club de Alto Rendimiento
+            </p>
+          </motion.div>
 
-        <div
-          className="max-w-4xl mx-auto flex flex-col items-center animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300 fill-mode-both"
-        >
-          <p className="text-lg md:text-2xl font-bold text-white/90 mb-12 text-balance leading-tight max-w-2xl border-l-4 border-orange-500 pl-6 uppercase italic tracking-wide">
-            Dedicados a tu evolución. Equipamiento de élite y entrenamiento de clase mundial para alcanzar tu máximo potencial.
-          </p>
+          {/* Hero headline — Adjusted size and leading to clear the center child's face */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3 }}
+            className="font-spartan font-black uppercase tracking-tight leading-[0.80] text-white mb-8 max-w-4xl"
+            style={{ fontSize: "clamp(2.5rem, 10vw, 7.5rem)" }}
+          >
+            Entrena como{" "}
+            <span className=" block sm:inline">élite.</span>
+          </motion.h1>
 
-          <div className="flex flex-col sm:flex-row items-center gap-4">
+          {/* Subtext */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-[14px] md:text-lg text-white/90 font-medium leading-relaxed max-w-lg mb-10 drop-shadow-lg"
+          >
+            Equipamiento de élite y entrenamiento de clase mundial
+            para alcanzar tu máximo potencial.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="flex flex-col sm:flex-row items-start gap-4"
+          >
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-zinc-200 transition-all duration-300 rounded-full px-10 py-6 text-sm font-bold tracking-widest uppercase hover:scale-105"
+              className="bg-white text-black hover:bg-white/90 transition-all duration-300 rounded-full px-10 py-7 text-[13px] font-bold tracking-wide group"
             >
               Únete Ya
+              <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white/10 hover:border-white transition-all duration-300 rounded-full px-10 py-6 text-sm font-bold tracking-widest uppercase hover:scale-105 backdrop-blur-sm"
+              variant="ghost"
+              className="text-white/80 hover:text-white hover:bg-white/10 border border-white/10 rounded-full px-10 py-7 text-[13px] font-bold tracking-wide"
             >
               Conoce Más
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
