@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Resultados de Competencias · Club Aguidom | Acarigua, Portuguesa",
     description:
       "Marcas personales y resultados de nuestros atletas en todas las pruebas de pista. Club Aguidom, Acarigua.",
-    url: "https://aguidom.com/race",
+    url: "https://aguidom.me/race",
   },
 };
 

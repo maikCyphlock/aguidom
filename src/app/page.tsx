@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
     description:
       "El único club de atletismo de pista en Acarigua-Araure. 25 años formando atletas en velocidad y fondo. Estadio José Antonio Páez, Portuguesa.",
-    url: "https://aguidom.com",
+    url: "https://aguidom.me",
   },
 };
 

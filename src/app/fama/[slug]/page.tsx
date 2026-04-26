@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${athlete.name} · ${athlete.category} | Club Aguidom Acarigua`,
       description: athlete.bio,
       images: [{ url: athlete.image, width: 800, height: 600, alt: athlete.name }],
-      url: `https://aguidom.com/fama/${slug}`,
+      url: `https://aguidom.me/fama/${slug}`,
     },
   };
 }

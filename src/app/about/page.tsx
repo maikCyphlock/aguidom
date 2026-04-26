@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Sobre Aguidom · Club de Atletismo en Acarigua desde 1999",
     description:
       "El club de atletismo más antiguo de Acarigua-Araure, Portuguesa. Más de 25 años formando atletas de pista con el Prof. Douglas Aguilar.",
-    url: "https://aguidom.com/about",
+    url: "https://aguidom.me/about",
   },
 };
 

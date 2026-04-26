@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Salón de la Fama · Atletas de Aguidom | Acarigua, Portuguesa",
     description:
       "Atletas élite formados en el Club Aguidom: Top 10 Nacional, Campeona CAF, Árbitro FIFA Qatar 2022. El orgullo del atletismo de Portuguesa.",
-    url: "https://aguidom.com/fama",
+    url: "https://aguidom.me/fama",
   },
 };
 

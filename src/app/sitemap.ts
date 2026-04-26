@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { athletes } from "@/consts/athletes";
 import { allDocs } from "contentlayer/generated";
 
-const siteUrl = "https://aguidom.com";
+const siteUrl = "https://aguidom.me";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

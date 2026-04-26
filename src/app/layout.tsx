@@ -7,7 +7,7 @@ import "./globals.css";
 import 'atropos/css'
 import Navbar from "@/components/Navbar";
 
-const siteUrl = "https://aguidom.com";
+const siteUrl = "https://aguidom.me";
 
 export const metadata: Metadata = {
   title: {
