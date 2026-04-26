@@ -1,3 +1,16 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
+  description:
+    "El club de atletismo más antiguo de Acarigua-Araure, Portuguesa. Entrenamiento de pista en velocidad y fondo para niños y jóvenes. 25 años formando campeones.",
+  openGraph: {
+    title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
+    description:
+      "El único club de atletismo de pista en Acarigua-Araure. 25 años formando atletas en velocidad y fondo. Estadio José Antonio Páez, Portuguesa.",
+    url: "https://aguidom.com",
+  },
+};
 
 import Experience from "@/components/Experience";
 import WinCase from "@/components/WinCase";

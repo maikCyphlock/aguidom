@@ -1,6 +1,16 @@
-"use client"
-import React from 'react'
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Resultados de Competencias · Atletismo Aguidom | Acarigua",
+  description:
+    "Tiempos y resultados de atletas del Club Aguidom en disciplinas de pista: 60m, 80m, 100m, 110m vallas, 150m, 300m y 1500m. Atletismo en Acarigua, Portuguesa.",
+  openGraph: {
+    title: "Resultados de Competencias · Club Aguidom | Acarigua, Portuguesa",
+    description:
+      "Marcas personales y resultados de nuestros atletas en todas las pruebas de pista. Club Aguidom, Acarigua.",
+    url: "https://aguidom.com/race",
+  },
+};
 
 function index() {
     return (

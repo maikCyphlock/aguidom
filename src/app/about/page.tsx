@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Sobre Aguidom · Club de Atletismo en Acarigua desde 1999",
+  description:
+    "Conoce la historia del Club Aguidom, el club de atletismo más antiguo de Acarigua-Araure. Prof. Douglas Aguilar · 25 años de trayectoria · Portuguesa, Venezuela.",
+  openGraph: {
+    title: "Sobre Aguidom · Club de Atletismo en Acarigua desde 1999",
+    description:
+      "El club de atletismo más antiguo de Acarigua-Araure, Portuguesa. Más de 25 años formando atletas de pista con el Prof. Douglas Aguilar.",
+    url: "https://aguidom.com/about",
+  },
+};
 
 function page() {
   return <div className="container prose prose-invert w-full max-w-3xl mx-auto space-y-3 py-12">

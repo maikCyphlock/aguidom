@@ -22,7 +22,7 @@ export const Footer = () => {
             info: [
                 { icon: <Mail className="w-4 h-4" />, text: "info@aguidom.com" },
                 { icon: <Phone className="w-4 h-4" />, text: "+54 4269599721" },
-                { icon: <MapPin className="w-4 h-4" />, text: "Portuguesa, Venezuela" },
+                { icon: <MapPin className="w-4 h-4" />, text: "Estadio José Antonio Páez, Acarigua, Portuguesa, Venezuela" },
             ],
         },
     ];

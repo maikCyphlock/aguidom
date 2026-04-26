@@ -7,26 +7,103 @@ import "./globals.css";
 import 'atropos/css'
 import Navbar from "@/components/Navbar";
 
+const siteUrl = "https://aguidom.com";
+
 export const metadata: Metadata = {
-  title: "Aguidom",
-  description: "club de atletismo",
+  title: {
+    default: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
+    template: "%s | Club Aguidom · Acarigua",
+  },
+  description:
+    "El club de atletismo más antiguo de Acarigua-Araure, Portuguesa. Formamos atletas de pista en velocidad y fondo desde hace 25 años. ¡Inscribe a tu hijo!",
+  keywords: [
+    "club de atletismo Acarigua",
+    "atletismo Araure",
+    "atletismo Portuguesa Venezuela",
+    "club atletismo niños Acarigua",
+    "entrenamiento atletismo Acarigua",
+    "clases atletismo Acarigua",
+    "deporte niños Acarigua",
+    "atletismo pista Portuguesa",
+    "Aguidom atletismo",
+    "Nitroguidom Acarigua",
+  ],
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: "website",
+    locale: "es_VE",
+    siteName: "Club Aguidom",
+    url: siteUrl,
+    title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
+    description:
+      "El club de atletismo más antiguo de Acarigua-Araure, Portuguesa. Formamos atletas de pista en velocidad y fondo desde hace 25 años.",
+    images: [
+      {
+        url: "/og-aguidom.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Club Aguidom · Atletismo Acarigua, Portuguesa",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
+    description:
+      "El club de atletismo más antiguo de Acarigua-Araure. 25 años formando atletas de pista en velocidad y fondo.",
+    images: ["/og-aguidom.jpg"],
+  },
   icons: {
     icon: "/icon.svg",
-  }
+  },
+  verification: {
+    google: "GakepX9fjvr1auiWEJbBeSLQWST6D-qXu2e6SOt1_oM",
+  },
 };
-// hola
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["SportsOrganization", "LocalBusiness"],
+  name: "Club Aguidom",
+  description:
+    "Club de atletismo de pista en Acarigua-Araure, Portuguesa. El más antiguo de la región con 25 años de trayectoria. Formamos atletas en velocidad y fondo.",
+  url: siteUrl,
+  logo: `${siteUrl}/aguidom.png`,
+  image: `${siteUrl}/og-aguidom.jpg`,
+  foundingDate: "1999",
+  sport: "Athletics",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Estadio José Antonio Páez",
+    addressLocality: "Acarigua",
+    addressRegion: "Portuguesa",
+    addressCountry: "VE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 9.5714,
+    longitude: -69.212,
+  },
+  areaServed: ["Acarigua", "Araure", "Portuguesa", "Venezuela"],
+  sameAs: ["https://www.instagram.com/aguidom"],
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
         <meta name="google-adsense-account" content="ca-pub-9018951160643855"></meta>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9018951160643855"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
         <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />
         <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png" />
