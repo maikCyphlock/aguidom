@@ -122,7 +122,7 @@ export default function RootLayout({
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="relative h-full w-full bg-zinc-950 min-h-screen">
+      <body className="relative h-full w-full bg-zinc-950 min-h-screen" suppressHydrationWarning>
         
     
 
