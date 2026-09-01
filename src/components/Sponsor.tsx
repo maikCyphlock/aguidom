@@ -1,83 +1,56 @@
-'use client'
+const sponsors = [
+  {
+    name: "BK Store",
+    href: "https://www.instagram.com/bkstore.ve/",
+    img: "https://github.com/maikCyphlock/img/blob/main/pt-bk-bgless.png?raw=true",
+    inverted: true,
+  },
+  {
+    name: "Fernando",
+    href: "https://www.instagram.com/eduarfer01/",
+    img: "https://github.com/maikCyphlock/img/blob/main/pt-fernando-bgless.png?raw=true",
+  },
+  {
+    name: "Dulcesitos",
+    href: "https://www.instagram.com/dulcesitos_wg29",
+    img: "https://github.com/maikCyphlock/img/blob/main/pt-dulcesitos-bgless.png?raw=true",
+  },
+  {
+    name: "Brillex",
+    href: "https://www.instagram.com/brillexacarigua/",
+    img: "https://github.com/maikCyphlock/img/blob/main/pt-brillex-bgless.png?raw=true",
+  },
+];
 
 export function Sponsor() {
-
   return (
-    <main className="py-20">
-      <div className="container mx-auto px-4 mb-16 text-center">
-        <p className="text-xs md:text-sm font-semibold tracking-[0.3em] uppercase mb-4 text-zinc-500">
-          NUESTROS ALIADOS
+    <section className="border-t border-white/5 py-16">
+      <div className="container mx-auto px-6 lg:px-16">
+        <p className="text-center text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-600">
+          Nuestros aliados
         </p>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
-          PATROCINADORES
-        </h2>
+        <ul className="mt-10 flex flex-wrap items-center justify-center gap-x-12 gap-y-8 md:gap-x-20">
+          {sponsors.map((sponsor) => (
+            <li key={sponsor.name}>
+              <a
+                href={sponsor.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <img
+                  src={sponsor.img}
+                  alt={sponsor.name}
+                  loading="lazy"
+                  className={`h-14 w-auto object-contain opacity-40 grayscale transition duration-500 hover:opacity-100 hover:grayscale-0 md:h-16 ${
+                    sponsor.inverted ? "invert" : ""
+                  }`}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div
-        className="slider"
-        style={
-          {
-            /* @ts-ignore */
-            "--width": "150px",
-            "--height": "150px",
-            "--quantity": "4"
-          }
-        }
-      >
-        <div className="list">
-          <div className="item inverted" style={
-            {
-              /* @ts-ignore */
-              "--position": "1"
-            }
-          }>
-            <a href="https://www.instagram.com/bkstore.ve/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://github.com/maikCyphlock/img/blob/main/pt-bk-bgless.png?raw=true"
-                alt="BK Store"
-                className="transition-all duration-500 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 object-contain"
-              />
-            </a>
-
-          </div>
-          <div className="item" style={{
-            /* @ts-ignore */
-            "--position": "2"
-          }}>
-            <a href="https://www.instagram.com/eduarfer01/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://github.com/maikCyphlock/img/blob/main/pt-fernando-bgless.png?raw=true"
-                alt="Fernando"
-                className="transition-all duration-500 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 object-contain"
-              />
-            </a>
-          </div>
-          <div className="item" style={{
-            /* @ts-ignore */
-            "--position": "3"
-          }}>
-            <a href="https://www.instagram.com/dulcesitos_wg29" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://github.com/maikCyphlock/img/blob/main/pt-dulcesitos-bgless.png?raw=true"
-                alt="Dulcesitos"
-                className="transition-all duration-500 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 object-contain"
-              />
-            </a>
-          </div>
-          <div className="item" style={{
-            /* @ts-ignore */
-            "--position": "4"
-          }}>
-            <a href="https://www.instagram.com/brillexacarigua/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="https://github.com/maikCyphlock/img/blob/main/pt-brillex-bgless.png?raw=true"
-                alt="Brillex"
-                className="transition-all duration-500 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 object-contain"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
-    </main>
-  )
+    </section>
+  );
 }
-

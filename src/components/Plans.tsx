@@ -1,176 +1,117 @@
-'use client'
+import { MapPin, ExternalLink } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import {
+  ADDRESS,
+  MAP_EMBED,
+  MAP_LINK,
+  SESSIONS,
+  TRAINING_DAYS,
+} from "@/consts/club";
 
-import { motion } from "framer-motion"
-import { MapPin, Clock, Calendar, Zap, Activity, Navigation } from 'lucide-react'
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-
-export default function SchedulePage() {
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  }
-
-  const item = {
-    hidden: { opacity: 0, scale: 0.95 },
-    show: { opacity: 1, scale: 1 }
-  }
-
+export default function Training() {
   return (
-    <div className="bg-zinc-950 p-4 md:p-8 min-h-screen text-white font-sans">
-      <div className="mx-auto max-w-6xl space-y-12">
-        {/* Header - Garmin Style */}
-        <div className="text-center space-y-2">
-          <Badge variant="outline" className="border-orange-500 text-orange-500 px-3 py-1 text-xs tracking-[0.2em] font-bold">
-            PANEL DE ENTRENAMIENTO
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic">
-            Club de Atletismo
-          </h1>
-          <p className="text-zinc-500 font-medium tracking-wide">
-            ESTADIO JOSÉ ANTONIO PÁEZ • PORTUGUESA, VZLA
-          </p>
-        </div>
+    <section
+      id="entrenamiento"
+      className="border-t border-white/5 py-24 md:py-32"
+    >
+      <div className="container mx-auto px-6 lg:px-16">
+        <SectionHeader
+          lane="03"
+          eyebrow="Horarios y sede"
+          title={
+            <>
+              Cuándo y dónde{" "}
+              <span className="text-orange-400">entrenamos</span>
+            </>
+          }
+          lead="Dos sesiones diarias en la pista del Estadio José Antonio Páez. Llega quince minutos antes para el calentamiento."
+        />
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid lg:grid-cols-12 gap-8 items-center"
-        >
-          {/* Map Section - Circular Bezel */}
-          <motion.div variants={item} className="lg:col-span-5 flex justify-center">
-            <div className="relative group">
-              {/* Outer Bezel */}
-              <div className="absolute -inset-4 rounded-full border border-zinc-800/50 pointer-events-none" />
-              <div className="absolute -inset-1 rounded-full border-2 border-zinc-800 pointer-events-none group-hover:border-orange-500/50 transition-colors duration-500" />
-
-              <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-zinc-900 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-                <iframe
-                  title="Ubicación Estadio"
-                  width="100%"
-                  height="100%"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-69.21650648117067%2C9.568906952315094%2C-69.20754790306093%2C9.573646561807903&amp;layer=mapnik"
-                  style={{ border: 0 }}
-                  className="grayscale invert opacity-70 group-hover:opacity-90 transition-opacity duration-500"
-                />
-
-                {/* HUD Overlay */}
-                <div className="absolute inset-0 pointer-events-none flex flex-col justify-between p-8">
-                  <div className="flex justify-between items-start">
-                    <Navigation className="w-5 h-5 text-orange-500" />
-                    <div className="text-[10px] font-bold text-zinc-400 bg-black/50 px-2 py-1 rounded">
-                      GPS ACTIVO
-                    </div>
-                  </div>
-                  <div className="flex justify-center">
-                    <div className="w-4 h-4 rounded-full bg-orange-500 animate-pulse ring-4 ring-orange-500/20" />
-                  </div>
-                  <div className="text-center">
-                    <div className="text-[10px] font-black tracking-widest text-zinc-500 uppercase">
-                      Coordenadas Estadio
-                    </div>
-                    <div className="text-xs font-mono text-orange-400">
-                      9.5714° N, 69.2120° W
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Stats & Schedule Section - Glances Style */}
-          <motion.div variants={item} className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-3 mb-2">
-              <Activity className="text-emerald-500 w-6 h-6" />
-              <h2 className="text-xl font-black uppercase tracking-widest italic">Horario Semanal</h2>
-            </div>
-
-            <div className="grid gap-4">
-              {/* Morning Glance */}
-              <Card className="bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/50 transition-colors group overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="flex items-stretch h-24">
-                    <div className="w-2 bg-emerald-500" />
-                    <div className="flex-1 flex items-center justify-between px-6">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <Zap className="w-4 h-4 text-emerald-500" />
-                          <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Aero-Potencia</span>
-                        </div>
-                        <h3 className="text-xl font-black italic uppercase italic">Sesión Mañana</h3>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-emerald-500 tabular-nums">06:00</div>
-                        <div className="text-[10px] font-bold text-zinc-500 uppercase">HORA DE INICIO</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Afternoon Glance */}
-              <Card className="bg-zinc-900/50 border-zinc-800 hover:border-orange-500/50 transition-colors group overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="flex items-stretch h-24">
-                    <div className="w-2 bg-orange-500" />
-                    <div className="flex-1 flex items-center justify-between px-6">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2">
-                          <Activity className="w-4 h-4 text-orange-500" />
-                          <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Fuerza y Velocidad</span>
-                        </div>
-                        <h3 className="text-xl font-black italic uppercase italic">Sesión Tarde</h3>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-3xl font-black text-orange-500 tabular-nums">16:00</div>
-                        <div className="text-[10px] font-bold text-zinc-500 uppercase">HORA DE INICIO</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Days Glance */}
-              <div className="bg-zinc-900/30 rounded-xl p-6 border border-zinc-800/50 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <Calendar className="w-5 h-5 text-zinc-500" />
+        <div className="mt-14 grid gap-6 lg:mt-20 lg:grid-cols-12">
+          {/* Sesiones */}
+          <div className="flex flex-col gap-4 lg:col-span-7">
+            {SESSIONS.map((session) => (
+              <div
+                key={session.time}
+                className="flex items-stretch overflow-hidden rounded-xl border border-white/10 bg-zinc-950 transition-colors hover:border-orange-500/40"
+              >
+                <div className="w-1 shrink-0 bg-orange-500" />
+                <div className="flex flex-1 flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <div className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Días Activos</div>
-                    <div className="flex gap-2 mt-1">
-                      {['L', 'M', 'M', 'J', 'V', 'S', 'D'].map((day, i) => (
-                        <div
-                          key={i}
-                          className={`w-7 h-7 rounded-md flex items-center justify-center text-[10px] font-black ${['L', 'M', 'J'].includes(day) && (day !== 'M' || i === 1)
-                            ? 'bg-orange-500 text-black'
-                            : 'bg-zinc-800 text-zinc-600'
-                            }`}
-                        >
-                          {day}
-                        </div>
-                      ))}
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-orange-400">
+                      {session.focus}
+                    </p>
+                    <h3 className="mt-2 font-spartan text-xl font-black uppercase tracking-tight text-white">
+                      {session.name}
+                    </h3>
+                    <p className="mt-1 text-sm text-zinc-500">{session.detail}</p>
+                  </div>
+                  <div className="shrink-0 sm:text-right">
+                    <div className="font-spartan text-4xl font-black tabular-nums leading-none text-white">
+                      {session.time}
+                    </div>
+                    <div className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600">
+                      Hora de inicio
                     </div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">Intensidad</div>
-                  <div className="mt-1 flex gap-1">
-                    <div className="w-4 h-1 bg-emerald-500 rounded-full" />
-                    <div className="w-4 h-1 bg-emerald-500 rounded-full" />
-                    <div className="w-4 h-1 bg-orange-500 rounded-full" />
-                    <div className="w-4 h-1 bg-zinc-800 rounded-full" />
-                  </div>
-                </div>
               </div>
+            ))}
+
+            {/* Días */}
+            <div className="rounded-xl border border-white/10 bg-zinc-950 p-6">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">
+                Días de entrenamiento
+              </p>
+              <ul className="mt-4 flex gap-2">
+                {TRAINING_DAYS.map((day, i) => (
+                  <li
+                    key={i}
+                    title={day.name}
+                    className={`flex h-9 w-9 items-center justify-center rounded-md text-xs font-black ${
+                      day.active
+                        ? "bg-orange-500 text-black"
+                        : "bg-zinc-900 text-zinc-600"
+                    }`}
+                  >
+                    <span className="sr-only">{day.name}</span>
+                    <span aria-hidden>{day.label}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+
+          {/* Sede */}
+          <div className="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-zinc-950 lg:col-span-5">
+            <div className="relative h-64 lg:h-auto lg:flex-1">
+              <iframe
+                title="Ubicación del Estadio José Antonio Páez"
+                loading="lazy"
+                src={MAP_EMBED}
+                className="h-full w-full opacity-80 invert grayscale"
+                style={{ border: 0 }}
+              />
+            </div>
+            <div className="border-t border-white/10 p-6">
+              <p className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-orange-400">
+                <MapPin className="h-3.5 w-3.5" /> Nuestra sede
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                {ADDRESS}
+              </p>
+              <a
+                href={MAP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.25em] text-white transition-colors hover:text-orange-400"
+              >
+                Cómo llegar <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

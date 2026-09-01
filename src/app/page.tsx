@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 
+import { Hero } from "@/components/Hero";
+import Experience from "@/components/Experience";
+import Athletes from "@/components/Athletes";
+import Training from "@/components/Plans";
+import Pricing from "@/components/Pricing";
+import InstagramSection from "@/components/instagramClient";
+import { Sponsor } from "@/components/Sponsor";
+import { Footer } from "@/components/Footer";
+
 export const metadata: Metadata = {
   title: "Club Aguidom | Atletismo en Acarigua, Portuguesa · 25 Años",
   description:
@@ -12,30 +21,18 @@ export const metadata: Metadata = {
   },
 };
 
-import Experience from "@/components/Experience";
-import WinCase from "@/components/WinCase";
-import Plans from "@/components/Plans";
-import Pricing from "@/components/Pricing";
-import { Sponsor } from "@/components/Sponsor";
-
-import { Hero } from "../components/Hero";
-import InstagramClient from "@/components/instagramClient";
-import { Footer } from "@/components/Footer";
-
 export default function Home() {
   return (
-    <div className="mx-auto scroll-smooth">
+    <div className="scroll-smooth">
       <main>
         <Hero />
-      </main>
-      <Sponsor />
-      <div className="lg:px-20 space-y-[200px]">
         <Experience />
-        <WinCase />
-        <Plans />
-        <InstagramClient />
+        <Athletes />
+        <Training />
         <Pricing />
-      </div>
+        <InstagramSection />
+        <Sponsor />
+      </main>
       <Footer />
     </div>
   );

@@ -1,108 +1,91 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
+import { SectionHeader } from "@/components/SectionHeader";
+import { WHATSAPP_URL } from "@/consts/club";
+
+const benefits = [
+  "Entrenamientos en la pista del estadio",
+  "Participación en eventos y competencias",
+  "Chequeo de fisioterapeuta",
+  "Plan adaptado a tu edad y nivel",
+];
 
 export default function Pricing() {
-  const benefits = [
-    "Entrenamientos en el estadio",
-    "Participaciones en eventos",
-    "Chequeo de fisioterapeuta",
-  ];
-
   return (
-    <section className="relative w-full py-24 md:py-32 overflow-hidden" id="precios">
-      {/* Background Decorative patterns — ultra subtle */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-white/5 blur-[120px] rounded-full" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-white/5 blur-[100px] rounded-full" />
-      </div>
+    <section
+      id="precios"
+      className="relative overflow-hidden border-t border-white/5 py-24 md:py-32"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-orange-500/10 blur-[140px]"
+      />
 
-      <div className="container relative z-10 mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase text-white/40 font-semibold mb-4">
-              Membresía
-            </p>
-            <h2
-              className="text-4xl md:text-6xl font-spartan font-black uppercase tracking-tighter text-white mb-6"
-            >
-              Únete a la <span className="text-white/40 italic">Élite</span>
-            </h2>
-            <p className="text-white/50 text-base md:text-lg max-w-xl mx-auto font-medium leading-relaxed">
-              Accede a instalaciones de primer nivel y entrenamiento profesional diseñado para deportistas de alto rendimiento.
-            </p>
-          </motion.div>
-        </div>
+      <div className="container relative z-10 mx-auto px-6 lg:px-16">
+        <SectionHeader
+          lane="04"
+          eyebrow="Inscripción"
+          align="center"
+          title={
+            <>
+              Únete al <span className="text-orange-400">club</span>
+            </>
+          }
+          lead="Una sola cuota mensual. Sin matrícula, sin permanencia mínima."
+        />
 
-        {/* Pricing Card */}
-        <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="group relative w-full max-w-md"
-          >
-            {/* Ambient Glow */}
-            <div className="absolute -inset-0.5 bg-gradient-to-b from-white/10 to-transparent rounded-[2rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000" />
-
-            <div className="relative bg-zinc-950/40 backdrop-blur-3xl border border-white/10 p-10 md:p-12 rounded-[2rem] flex flex-col items-center">
-              <div className="w-full flex justify-between items-start mb-10">
+        <div className="mt-14 flex justify-center md:mt-20">
+          <div className="w-full max-w-md overflow-hidden rounded-2xl border border-white/10 bg-zinc-950">
+            <div className="h-1 bg-orange-500" />
+            <div className="p-8 md:p-10">
+              <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="text-sm tracking-[0.2em] uppercase text-white/40 font-bold mb-2">
-                    Plan Básico
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-zinc-500">
+                    Mensualidad
                   </h3>
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-spartan font-black text-white">$15</span>
-                    <span className="text-white/40 font-medium text-sm">/mes</span>
-                  </div>
+                  <p className="mt-3 flex items-baseline gap-1">
+                    <span className="font-spartan text-6xl font-black tabular-nums leading-none text-white">
+                      $15
+                    </span>
+                    <span className="text-sm font-medium text-zinc-500">
+                      /mes
+                    </span>
+                  </p>
                 </div>
-                <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold tracking-widest uppercase text-white/50">
-                  Standard
-                </div>
+                <span className="rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-orange-400">
+                  Todas las edades
+                </span>
               </div>
 
-              <div className="w-full space-y-5 mb-12">
-                {benefits.map((benefit, i) => (
-                  <motion.div
-                    key={benefit}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 + (i * 0.1) }}
-                    className="flex items-center gap-4 group/item"
-                  >
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover/item:border-white/30 transition-colors">
-                      <Check className="w-3 h-3 text-white/70" />
-                    </div>
-                    <span className="text-sm md:text-base text-white/60 font-medium group-hover/item:text-white/90 transition-colors">
+              <ul className="my-10 space-y-4">
+                {benefits.map((benefit) => (
+                  <li key={benefit} className="flex items-center gap-4">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-orange-500/30 bg-orange-500/10">
+                      <Check className="h-3 w-3 text-orange-400" />
+                    </span>
+                    <span className="text-sm text-zinc-300 md:text-base">
                       {benefit}
                     </span>
-                  </motion.div>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
               <Button
                 asChild
-                className="w-full bg-white text-black hover:bg-zinc-200 h-14 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:scale-[1.02]"
+                className="group h-14 w-full rounded-full bg-orange-500 text-xs font-bold uppercase tracking-[0.2em] text-white transition-colors hover:bg-orange-400"
               >
-                <a href="/subscribe">Comenzar Ahora</a>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  Escríbenos por WhatsApp
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </Button>
+              <p className="mt-4 text-center text-xs text-zinc-600">
+                Te respondemos y coordinamos tu primera práctica.
+              </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-
-      {/* Aesthetic Hairline */}
-      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     </section>
   );
 }
