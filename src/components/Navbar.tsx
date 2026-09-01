@@ -25,7 +25,7 @@ function FloatingNavbar() {
       >
         <Link href="/" className="flex items-center gap-2">
           <img
-            src="logo-para-fondo-oscuro.svg"
+            src="/logo-para-fondo-oscuro.svg"
             alt="Logo"
             className="h-7 w-7"
           />
