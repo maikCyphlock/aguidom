@@ -172,9 +172,9 @@ export default function TallerAtletismoPage() {
             {athletes.map((athlete) => (
               <div
                 key={athlete.name}
-                className="rounded-2xl border border-white/10 bg-zinc-950 p-8"
+                className="rounded-2xl border border-white/10 bg-zinc-950 p-6 sm:p-8"
               >
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-500/10 font-spartan text-lg font-black text-orange-400">
                       {athlete.name.charAt(0)}
@@ -214,12 +214,11 @@ export default function TallerAtletismoPage() {
                       {athlete.series.map((s, i) => (
                         <div
                           key={i}
-                          className="grid grid-cols-5 gap-2 rounded-lg bg-white/[0.03] px-3 py-2 text-xs text-zinc-400"
+                          className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-lg bg-white/[0.03] px-3 py-2 text-xs text-zinc-400"
                         >
-                          <span className="col-span-2 truncate text-white">{s.serie}</span>
-                          <span>{s.ritmo}</span>
-                          <span>{s.reps}</span>
-                          <span className="text-right">{s.fc} lpm · {s.valoracion}</span>
+                          <span className="text-white">{s.serie}</span>
+                          <span>{s.ritmo} · {s.reps}</span>
+                          <span>{s.fc} lpm · {s.valoracion}</span>
                         </div>
                       ))}
                     </div>

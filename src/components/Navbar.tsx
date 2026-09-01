@@ -51,7 +51,7 @@ function FloatingNavbar() {
       <nav className="md:hidden w-full flex justify-between items-center py-2 px-4 bg-zinc-950/80 backdrop-blur-xl border border-white/10 rounded-full">
         <Link href="/">
           <img
-            src="logo-para-fondo-oscuro.svg"
+            src="/logo-para-fondo-oscuro.svg"
             alt="Logo"
             className="h-7 w-7"
           />
