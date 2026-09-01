@@ -8,7 +8,7 @@ const links = [
   { name: "Horarios", href: "/#entrenamiento" },
   { name: "Precios", href: "/#precios" },
   { name: "Noticias", href: "/blog" },
-  { name: "Competencias", href: "/events/nitroguidom" },
+  { name: "Eventos", href: "/events" },
 ];
 
 export const Footer = () => {
@@ -24,7 +24,7 @@ export const Footer = () => {
           <div>
             <Link href="/" className="mb-6 inline-block">
               <h2 className="font-spartan text-2xl font-black uppercase tracking-tighter text-white">
-                Agui<span className="text-orange-400">dom</span>
+                Aguidom
               </h2>
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-zinc-500">

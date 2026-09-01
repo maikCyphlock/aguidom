@@ -12,7 +12,7 @@ function FloatingNavbar() {
     { name: 'Inicio', icon: <Home className="w-5 h-5" />, href: '/' },
     { name: 'Fama', icon: <Trophy className="w-5 h-5" />, href: '/fama' },
     { name: 'Noticias', icon: <NewspaperIcon className="w-5 h-5" />, href: '/blog' },
-    { name: 'competencias', icon: <Calendar className="w-5 h-5" />, href: '/events/nitroguidom' },
+    { name: 'eventos', icon: <Calendar className="w-5 h-5" />, href: '/events' },
     { name: 'Nosotros', icon: <User className="w-5 h-5" />, href: '/about' },
   ]
 
@@ -23,12 +23,15 @@ function FloatingNavbar() {
         id="NavbarRoot"
         className="md:flex py-2 px-6 items-center bg-zinc-950/80 backdrop-blur-xl border border-white/10 rounded-full justify-between hidden w-full max-w-4xl"
       >
-        <Link href="/">
+        <Link href="/" className="flex items-center gap-2">
           <img
             src="logo-para-fondo-oscuro.svg"
             alt="Logo"
             className="h-7 w-7"
           />
+          <span className="font-spartan text-sm font-black uppercase tracking-tighter text-white">
+            Aguidom
+          </span>
         </Link>
         <div className="gap-1 flex">
           {navItems.map((item) => (

@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/fama`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${siteUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteUrl}/race`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${siteUrl}/events/nitroguidom`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${siteUrl}/events`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
   const athleteRoutes: MetadataRoute.Sitemap = athletes.map((a) => ({
