@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const events = [
-  { name: "SpeedChamp", status: "Próximamente" as const, image: null, href: null },
+  { name: "SpeedChamp 3 · 24 de octubre en Acarigua", status: "Próximamente" as const, image: "/events/speedchamp.webp", href: "https://speedchamp.aguidom.me" },
   { name: "Taller de atletismo para adultos", status: "Hecho" as const, image: "/events/taller-atletismo.png", href: "/events/taller-atletismo" },
   { name: "Plan vacacional de niños", status: "Hecho" as const, image: "/events/plan-vacional.png", href: null },
 ];
